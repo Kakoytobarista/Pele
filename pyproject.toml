@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "pele"
+version = "0.1.0"
+description = ""
+authors = ["aslan <baristan1aslan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+djangorestframework = "^3.14.0"
+django-extensions = "^3.2.1"
+django-filter = "^22.1"
+django-phonenumber-field = {extras = ["phonenumberslite"], version = "^7.0.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

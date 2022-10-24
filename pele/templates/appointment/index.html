@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <div>
+        <div id="form_appointment" class="container">
+            <form action="submit_phpcrm_form.php" method="post"><br>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone</label>
+                <input type="number" id="phone" name="phone" required>
+                <div>
+                    <div>
+                        <label for="date">Appointment Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <label for="phone">Appointment Time</label>
+                    <div id="time" class="select__item">
+                        <div class="select__output" tabindex="1">
+                            <div class="select__content"></div>
+                        </div>
+                        <div class="select__body hide">
+                            <ul class="select-body__list">
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                                <li class="select-body__item">
+
+                                </li>
+                            </ul>
+                            <div class="select__btn">
+                                <input id="submit" type="submit" value="Submit" class="select-btn__item">
+                            </div>
+                        </div>
+                    </div>
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" name="comment" style="height:100px" required></textarea>
+                    <div class="col text-center">
+                        <input id="btn_submit" type="submit" value="Submit" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
