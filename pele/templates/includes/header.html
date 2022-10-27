@@ -4,9 +4,10 @@
     <nav id="header" class="navbar navbar-expand-md bg-lightskyblue navbar-light border-bottom text-lg-end" style="background-color: rgba(255,255,255,1)">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'appointment:index' %}">
-                <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="{% static 'img/logo.jpeg' %}" width="40" height="40" class="d-inline-block align-top" alt="">
                 <span style="color:red">PE</span>LE Appointment
             </a>
+            <meta name="csrf_token" content="{{ csrf_token }}">
             </div>
         </div>
     </nav>

@@ -1,4 +1,4 @@
-from django.contrib import admin
+from datetime import datetime, timedelta
 
 from appointment.models import Appointment
 
@@ -37,6 +37,7 @@ class UploadAppointmentsObject:
                         date_start = date_start.combine(date_start, start_time_saturday)
                 else:
                     print("Create Object")
+                    Appointment.objects.create()
                     print(date_start.strftime("%A"))
                     print(date_start.time())
                     print("_______________")
@@ -60,47 +61,5 @@ class UploadAppointmentsObject:
             start_count += 1
 
 
-
-@admin.register(Appointment)
-class AppointmentAdmin(admin.ModelAdmin):
-
-    date_hierarchy = "date"
-    fields = (
-        'name',
-        'date',
-        'email',
-        'phone',
-        'time_begin',
-        'time_end',
-        'is_available',
-        'comment',
-        'barber',
-    )
-    list_display = (
-        "name",
-        "date",
-        "time_begin",
-        "time_end",
-        "is_available",
-        'barber',
-    )
-    list_editable = (
-        "name",
-        "time_begin",
-        "time_end",
-        "is_available",
-        'barber',
-    )
-    empty_value_display = "--- EMPTY ---"
-    list_filter = (
-        'is_available',
-        'barber'
-    )
-    search_fields = (
-        'date',
-        'barber'
-    )
-    list_display_links = (
-        'date',
-    )
-    admin.site.empty_value_display = '(None)'
+uploader = UploadAppointmentsObject()
+uploader.upload_data_to_db_original("2022-10-31", 14)

@@ -153,6 +153,7 @@ body {
   margin-top: 9%;
   bottom: 0;
   padding: 0;
+  position: absolute;
 }
 
 
@@ -189,7 +190,9 @@ header {
     background-color: white;
     color: black;
     border: 1px solid #dee2e6!important; /* Green */
-    width: 20%;
+    width: 200px;
+    min-width: 100px;
+    max-width: 250px;
 
 }
 
@@ -236,6 +239,8 @@ header {
   border: 2px solid rgba(125, 138, 253, 0.3);
   border-radius: 4px;
   cursor: pointer;
+  align-items: center;
+  text-align: center;
 }
 
 .shadow {

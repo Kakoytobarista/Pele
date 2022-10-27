@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from appointment.models import Appointment
+from users.models import User
 
 
 class ReadOnlyModelSerializer(serializers.ModelSerializer):
@@ -31,6 +32,8 @@ class AppointmentCreateSerializer(serializers.ModelSerializer):
                             'time_begin',
                             'time_end',
                             )
+        extra_kwargs = {'name': {'required': True},
+                        'phone': {'required': True}}
 
 
 class AppointmentSerializer(ReadOnlyModelSerializer):
@@ -50,4 +53,17 @@ class AppointmentSerializer(ReadOnlyModelSerializer):
             'time_end',
             'is_available',
             'comment',
+            'barber',
+        )
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'barber_first_name',
+            'barber_second_name',
+            'work_experience',
         )

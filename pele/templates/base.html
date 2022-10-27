@@ -2,6 +2,7 @@
 {% load static %}
 <html lang="en">
 <head>
+   <link rel="icon" href="{% static 'img/logo.ico' %}" type="image">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -18,7 +19,6 @@
     {% endblock %}
 </main>
 {% include 'includes/footer.html' %}
-    <script type="module" src="{% static  'js/main.js' %}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

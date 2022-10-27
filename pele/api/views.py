@@ -1,15 +1,16 @@
-from datetime import datetime
-
+from django.db.models import Q
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework import viewsets
 
 from api.mixins import AppointmentMixinViewSet
 from api.utils import get_queryset_for_available_appointment
 from appointment.models import Appointment
-from api.serializers import AppointmentSerializer, AppointmentCreateSerializer
+from api.serializers import AppointmentSerializer, AppointmentCreateSerializer, UserSerializer
+from users.models import User
 
 
 class AppointmentViewSet(AppointmentMixinViewSet):
@@ -38,13 +39,14 @@ class AppointmentViewSet(AppointmentMixinViewSet):
         """
         appointment_object = get_object_or_404(Appointment, id=kwargs['pk'])
         data = request.data
+        serializer = AppointmentCreateSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
         appointment_object.name = data.get('name', appointment_object.name)
         appointment_object.email = data.get('email', appointment_object.email)
         appointment_object.phone = data.get('phone', appointment_object.phone)
         appointment_object.comment = data.get('comment', appointment_object.comment)
         appointment_object.is_available = False
         appointment_object.save()
-        serializer = AppointmentCreateSerializer(appointment_object)
         return Response(serializer.data, status.HTTP_206_PARTIAL_CONTENT)
 
     @action(methods=('post',), detail=False)
@@ -54,3 +56,18 @@ class AppointmentViewSet(AppointmentMixinViewSet):
                                                           appointment_obj=Appointment)
         serializer = AppointmentSerializer(queryset, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filterset_fields = ('work_experience',)
+    permission_classes = (AllowAny,)
+    http_method_names = ['get', ]
+
+    @action(methods=('get',), detail=False)
+    def get_barbers(self, request):
+        queryset = User.objects.filter(~Q(barber_first_name=""))
+        serializer = UserSerializer(queryset, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+

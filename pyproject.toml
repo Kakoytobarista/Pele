@@ -11,6 +11,7 @@ djangorestframework = "^3.14.0"
 django-extensions = "^3.2.1"
 django-filter = "^22.1"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "^7.0.0"}
+DateTimeRange = "^1.2.0"
 
 
 [build-system]
