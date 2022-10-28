@@ -153,7 +153,6 @@ body {
   margin-top: 9%;
   bottom: 0;
   padding: 0;
-  position: absolute;
 }
 
 
@@ -312,4 +311,18 @@ header {
 
 .show {
   display: block;
+}
+
+
+
+a[href='#']{
+  border-style: solid;
+  border-color: rgb(221, 221, 221);
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+}
+
+a[href='#'].active {
+  background-color: gray;
 }

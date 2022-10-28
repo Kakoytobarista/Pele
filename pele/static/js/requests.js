@@ -4,14 +4,14 @@ const headersParams = {
           'Content-Type': 'application/json'
         }
 
-export const getAvailableAppointments = async function (date) {
+export const getAvailableAppointments = async function (date, barberId) {
     try {
         let response = await fetch(`${mainApiUrl}/appointments/get_available_appointment_on_current_day/`, {
                 method: 'POST',
                 headers: headersParams,
                 body: JSON.stringify({
                         'date': date,
-                        'barber': 5
+                        'barber': barberId
                     }
                 )
             }
@@ -53,7 +53,7 @@ export const makeRequestToMakeAppointment = async function (name, email,
 
 
 
-export const getBarbers = async function () {
+export const requestGetBarbers = async function () {
     try {
         let response = await fetch(`${mainApiUrl}/users/get_barbers/`, {
                 method: 'GET',

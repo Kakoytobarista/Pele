@@ -1,9 +1,11 @@
 from datetime import datetime, timedelta
 
+from django.core.management import BaseCommand
+
 from appointment.models import Appointment
 
 
-class UploadAppointmentsObject:
+class UploadAppointmentsObject(BaseCommand):
     """
     Function for uploading appointments to
     db.
@@ -15,17 +17,21 @@ class UploadAppointmentsObject:
     SATURDAY = "Saturday"
     SUNDAY = "Closed"
 
-    def upload_data_to_db_original(self, date, appointments_count):
-        start_time_weekdays = datetime.strptime(f'{date} 9:00AM', '%Y-%m-%d %I:%M%p').time()
-        end_time_weekdays = datetime.strptime(f'{date} 8:00PM', '%Y-%m-%d %I:%M%p').time()
+    def add_arguments(self, parser):
+        parser.add_argument('arg', type=int)
 
-        start_time_saturday = datetime.strptime(f'{date} 10:00AM', '%Y-%m-%d %I:%M%p').time()
-        end_time_saturday = datetime.strptime(f'{date} 3:00PM', '%Y-%m-%d %I:%M%p').time()
+    def handle(self, *args, **options):
+        num = options['arg']
+        start_time_weekdays = datetime.strptime(f'{args} 9:00AM', '%Y-%m-%d %I:%M%p').time()
+        end_time_weekdays = datetime.strptime(f'{args} 8:00PM', '%Y-%m-%d %I:%M%p').time()
 
-        date_start = datetime.strptime(f'{date} 9:00AM', '%Y-%m-%d %I:%M%p')
+        start_time_saturday = datetime.strptime(f'{args} 10:00AM', '%Y-%m-%d %I:%M%p').time()
+        end_time_saturday = datetime.strptime(f'{args} 3:00PM', '%Y-%m-%d %I:%M%p').time()
+
+        date_start = datetime.strptime(f'{args} 9:00AM', '%Y-%m-%d %I:%M%p')
         start_count = 0
 
-        while start_count < appointments_count:
+        while start_count < num:
             if date_start.strftime("%A") in self.WEEKDAYS:
                 if date_start.time() > end_time_weekdays:
                     date_start += timedelta(days=1)
@@ -37,7 +43,12 @@ class UploadAppointmentsObject:
                         date_start = date_start.combine(date_start, start_time_saturday)
                 else:
                     print("Create Object")
-                    Appointment.objects.create()
+                    Appointment.objects.create(date=date_start,
+                                               time_begin=date_start.time(),
+                                               time_end=(date_start + timedelta(minutes=60)).time())
+                    Appointment.objects.create(date=date_start,
+                                               time_begin=date_start.time(),
+                                               time_end=(date_start + timedelta(minutes=60)).time())
                     print(date_start.strftime("%A"))
                     print(date_start.time())
                     print("_______________")
@@ -52,7 +63,15 @@ class UploadAppointmentsObject:
                     else:
                         print("Change day")
                         date_start = date_start.combine(date_start, start_time_weekdays)
+
                 else:
+                    Appointment.objects.create(date=date_start,
+                                               time_begin=date_start.time(),
+                                               time_end=(date_start + timedelta(minutes=60)).time())
+                    Appointment.objects.create(date=date_start,
+                                               time_begin=date_start.time(),
+                                               time_end=(date_start + timedelta(minutes=60)).time())
+
                     print("Create Object")
                     print(date_start.strftime("%A"))
                     print(date_start.time())
@@ -62,4 +81,4 @@ class UploadAppointmentsObject:
 
 
 uploader = UploadAppointmentsObject()
-uploader.upload_data_to_db_original("2022-10-31", 14)
+uploader.handle("2022-10-31", 14)

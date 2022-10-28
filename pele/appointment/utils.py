@@ -12,7 +12,8 @@ def send_mail_custom(request: HttpRequest, data):
 
     current_site = get_current_site(request)
     mail_subject = 'Activate your blog account.'
-    message = f"Hello man {data['name']}, {current_site}"
+    message = f"Hello man {data['name']}, your comment is: {data['comment']} .<br>" \
+              f"{current_site}"
     send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [data["email"]], fail_silently=False)
 
 

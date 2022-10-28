@@ -12,6 +12,16 @@
                 <input type="email" id="email" name="email">
                 <label for="phone">Phone</label>
                 <input type="number" id="phone" name="phone" required>
+                <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select the barber
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item  barbers " href="#">Action</a></li>
+                        <li><a class="dropdown-item  barbers" href="#">Another action</a></li>
+                        <li><a class="dropdown-item  barbers" href="#">Something else here</a></li>
+                      </ul>
+                    </div>
                 <div>
                     <div>
                         <label for="date">Appointment Date</label>
@@ -50,38 +60,6 @@
                             </ul>
                         </div>
                     </div>
-                    <label for="time">Barber names</label>
-                    <div id="time" class="select__item_barbers" required="true">
-                        <div class="select__output" id="select__output_barbers" tabindex="1">
-                            <div class="select__content_barbers"></div>
-                        </div>
-                        <div class="select__body_barbers hide">
-                            <ul class="select-body__list_barbers">
-                                <li class="select-body__item_barbers">
-                                </li>
-                                <li class="select-body__item_barbers">
-
-                                </li>
-                                <li class="select-body__item_barbers">
-
-                                </li>
-                                <li class="select-body__item_barbers">
-
-                                </li>
-                                <li class="select-body__item_barbers">
-
-                                </li>
-                                <li class="select-body__item_barbers">
-
-                                </li>
-                                <li class="select-body__item_barbers">
-
-                                </li>
-                                <li class="select-body__item_barbers">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <label for="comment">Comment</label>
                     <textarea id="comment" name="comment" style="height:100px"></textarea>
                     <div class="col text-center">
@@ -93,5 +71,6 @@
     </div>
 </div>
     <script type="module" src="{% static  'js/main.js' %}"></script>
+    <script type="module" src="{% static  'js/barbers_choice.js' %}"></script>
 
 {% endblock %}

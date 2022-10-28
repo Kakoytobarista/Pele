@@ -11,6 +11,7 @@ def index(request):
         request.session["email"] = request.POST["email"]
         request.session["phone"] = request.POST["phone"]
         request.session["date"] = request.POST["date"]
+        request.session["comment"] = request.POST["comment"]
         return redirect(reverse("appointment:success_appointment"))
     return render(request=request,
                   template_name=template)

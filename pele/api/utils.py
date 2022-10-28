@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from django.db.models import Q
+
 
 def get_queryset_for_available_appointment(data, appointment_obj):
     current_time = datetime.now().time()
@@ -11,11 +13,11 @@ def get_queryset_for_available_appointment(data, appointment_obj):
     elif current_date == date_db:
         queryset = appointment_obj.objects.filter(date=date_db,
                                                   time_begin__gt=current_time,
-                                                  is_available=True,
-                                                  barber=data.get('barber'))
+                                                  is_available=True, barber=data.get('barber')
+                                                  ).filter(Q(barber=data.get('barber')) | Q(barber=None))
     else:
         queryset = appointment_obj.objects.filter(date=date_db,
-                                                  is_available=True,
-                                                  barber=data.get('barber'))
+                                                  is_available=True
+                                                  ).filter(Q(barber=data.get('barber')) | Q(barber=None))
 
     return queryset
