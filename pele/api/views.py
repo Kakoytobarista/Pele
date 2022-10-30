@@ -1,4 +1,3 @@
-from django.db.models import Q
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
@@ -67,7 +66,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=('get',), detail=False)
     def get_barbers(self, request):
-        queryset = User.objects.filter(~Q(barber_first_name=""))
+        queryset = User.objects.filter(role="barber_user")
         serializer = UserSerializer(queryset, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 

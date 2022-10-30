@@ -8,14 +8,20 @@ from users.models import User
 class UserAdmin(admin.ModelAdmin):
     list_display = (
         'username',
-        'barber_first_name',
-        'barber_second_name',
+        'first_name',
+        'last_name',
+        'role',
         'work_experience',
     )
     fields = (
         'username',
-        'barber_first_name',
-        'barber_second_name',
+        'first_name',
+        'last_name',
+        'password',
+        'email',
+        'phone',
+        'role',
         'work_experience',
+        'is_active',
     )
 

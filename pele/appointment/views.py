@@ -2,10 +2,25 @@ from django.shortcuts import render, redirect
 from rest_framework.reverse import reverse
 
 from appointment.utils import send_mail_custom
+from users.models import User
 
 
 def index(request):
     template = 'appointment/index.html'
+    if request.user.is_authenticated:
+        user_data = User.objects.filter(id=request.session["_auth_user_id"])
+        name = f"{user_data[0].first_name} {user_data[0].first_name}"
+        email = user_data[0].email
+        phone = user_data[0].phone
+        context = {
+            "name": name,
+            "email": email,
+            "phone": phone,
+        }
+        print(context["name"])
+        return render(request=request,
+                      template_name=template,
+                      context=context)
     if request.method == "POST" or None:
         request.session["time"] = request.POST["time"]
         return redirect(reverse("appointment:success_appointment"))

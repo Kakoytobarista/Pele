@@ -352,3 +352,29 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
   transform: scale(1);
 }
+
+
+
+/*!**! Nav bar*/
+
+
+.navbar-brand {
+    padding-left: 30px;
+}
+.card-header {
+    text-align: center;
+}
+
+
+.btn-primary {
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: gray!important;
+}
+
+
+#text_user {
+     border-radius: 10px 15px;
+}

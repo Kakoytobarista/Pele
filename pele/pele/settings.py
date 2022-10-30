@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'appointment.apps.AppointmentConfig',
     'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +51,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.year.year',
             ],
         },
     },
@@ -99,6 +101,10 @@ USE_I18N = True
 USE_TZ = True
 
 
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'appointment:index'
+
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST',
@@ -107,7 +113,6 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD',
                                 default='][p123!@#')
 EMAIL_PORT = os.getenv('EMAIL_PORT',
                        default=587)
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

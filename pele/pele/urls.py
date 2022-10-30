@@ -7,6 +7,8 @@ from pele import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('auth/', include('users.urls', namespace='users')),
+    path('auth/', include('django.contrib.auth.urls')),
     path('', include('appointment.urls', namespace='appointment')),
 ]
 
