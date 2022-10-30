@@ -1,5 +1,5 @@
 import {requestGetBarbers} from "./requests.js";
-import {barberList, barbersElements, dateField} from "./constants.js"
+import {barberList, barbersElements, dateField, selectBarberField} from "./constants.js"
 import {getAvailableAppointment} from "./handlers.js";
 
 
@@ -15,7 +15,6 @@ async function addBarbersText() {
             return data[i]["barber_first_name"]
         }))
         barbersElements[i].setAttribute("check", "barber")
-
     }
 }
 
@@ -28,7 +27,7 @@ async function wrapperCheckTimeOut() {
             this.classList.add('active');
             prev = i;
             const aElementBarber = document.querySelector(".active")
-            console.log(aElementBarber !== null)
+            selectBarberField.textContent = `You chose ${aElementBarber.textContent}`
             if (aElementBarber !== null && dateField.value !== ""){
                 getAvailableAppointment()
             }

@@ -259,7 +259,7 @@ header {
   position: absolute;
   top: 64px;
   left: 0;
-  width: 100%;
+  width: 55%;
   max-height: 379px;
   padding: 24px 16px;
   background: #FFFFFF;
@@ -325,4 +325,30 @@ a[href='#']{
 
 a[href='#'].active {
   background-color: gray;
+}
+
+
+.form-check-label {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+.select__output {
+  text-align: left;
+}
+
+
+
+input[type="radio"] {
+  /* ...existing styles */
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  background-color: red;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }

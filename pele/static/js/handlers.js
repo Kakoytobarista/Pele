@@ -1,4 +1,10 @@
-import {dateField, elementWithTextOfAppointments, fieldDate, selectBody, selectItem} from "./constants.js";
+import {
+    dateField,
+    elementUlWithTextOfAppointments,
+    fieldDate,
+    selectBody,
+    selectItem
+} from "./constants.js";
 import {getAvailableAppointments} from "./requests.js";
 
 
@@ -20,38 +26,44 @@ function radioCheck() {
     for (const radioButton of radioButtons) {
         radioButton.addEventListener("click", () => {
             window.activeAppointment = radioButton.getAttribute("id")
-            selectItem.textContent = window.availableAppointments[window.activeAppointment]["time_begin"]
-            addAttributeShowToElement(selectBody)
+            selectItem.value = window.availableAppointments[window.activeAppointment]["time_begin"]
+            addAttributeHideToElement(selectBody)
         });
     }
 }
 
 export function addAttributeShowToElement(element) {
-    element.classList.toggle("show");
-    element.classList.toggle("shadow");
+    element.style.display = "block";
+}
+
+export function addAttributeHideToElement(element) {
+   element.style.display = "none";
 }
 
 function delAllValueFromAppointmentElems() {
-    Array.from(document.querySelectorAll('.form-check-input, .form-check-label')).forEach(el => el.remove());
+    Array.from(document.querySelectorAll('.form-check-input, ' +
+        '.form-check-label, .select-body__item')).forEach(el => el.remove());
 }
 
 async function createLabelAndInputElements(element, i) {
-    setAttributes(element[i].appendChild(document.createElement("input")),
+    setAttributes(element.appendChild(document.createElement("li")),
+        {
+            "class": "select-body__item  form-check"
+        })
+    let liElement = document.querySelectorAll(".select-body__item")
+    setAttributes(liElement[i].appendChild(document.createElement("input")),
         {
             "class": "form-check-input", "id": `${i}`,
-            "name": "size", "type": "radio", "checked": ""
+            "name": "flexRadioDefault", "type": "radio", "checked": ""
         })
-    setAttributes(element[i].appendChild(document.createElement("label")),
+    setAttributes(liElement[i].appendChild(document.createElement("label")),
         {"class": "form-check-label", "for": `${i}`})
 
 
     let appointmentField = document.querySelectorAll(".form-check-label")
     appointmentField[i].textContent = (await window.timeStart.then((data) => {
                 window.availableAppointments = data
-                console.log(window.availableAppointments)
-                console.log(window.date)
-                window.previewAppointment = [`Appointment at DATE: ${data[i]['date']} -- 
-                TIME : ${data[i]["time_begin"]} ${data[i]["barber"]}`]
+                window.previewAppointment = [`Appointment: ${data[i]["time_begin"]} - ${data[i]["time_end"]}`]
                 return window.previewAppointment
             }
         )
@@ -65,7 +77,6 @@ export async function getAvailableAppointment() {
         }
         delAllValueFromAppointmentElems()
          selectItem.textContent = ""
-         console.log('change date')
 
         let date = fieldDate.value
         let barberId = Number(aElementBarber.getAttribute("id_barber"))
@@ -76,7 +87,7 @@ export async function getAvailableAppointment() {
             return data.length
         })); i++) {
 
-            await createLabelAndInputElements(elementWithTextOfAppointments, i)
+            await createLabelAndInputElements(elementUlWithTextOfAppointments, i)
             radioCheck()
         }
 }
@@ -88,16 +99,12 @@ export async function setFreeAppointmentSpots(func) {
     )
 }
 
-export async function setFreeAppointmentAfterSelectBarber() {
-
-}
-
 
 export async function isClickToDateField () {
     dateField.addEventListener("click", async () => {
         const aElementBarber = document.querySelector(".active")
         if (aElementBarber == null) {
-            addAlert("Set barber name!")
+            addAlert("Choose a barber")
         }
     })
 }

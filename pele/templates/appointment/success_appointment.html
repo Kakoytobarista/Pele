@@ -2,9 +2,13 @@
 {% block content %}
 <section>
     <div>
-        <h1>You have successfully booked to the barbershop !</h1>
-        <p>All registration information will be sent to you by e-mail if you have indicated it).
-<br><br>Kind regards PELE Barbershop</p>
+        <h2>{{ request.session.name }}, you have successfully <br>
+            booked to the barbershop !</h2>
+        <p>All registration information will be sent to you by e-mail - {{ request.session.email }}<br>
+            if you have indicated it). Date of your appointment: {{ request.session.date }}.<br>
+            Time of your appointment: {{ request.session.time }}
+<br><br>Kind regards PELE Barbershop.</p>
+
     </div>
 </section>
 

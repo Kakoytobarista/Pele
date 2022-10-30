@@ -30,7 +30,7 @@ async function dropdown() {
     selectItem.addEventListener("click", async () => {
             const aElementBarber = document.querySelector(".active")
             if (fieldDate.value === "" || aElementBarber == null) {
-                addAlert("Fill field 'DATE'")
+                addAlert("Select the date of the appointment to the barber")
             }
             else {
                 addAttributeShowToElement(selectBody);
@@ -41,20 +41,18 @@ async function dropdown() {
 
 async function makeAppointment() {
     await btnSubmit.addEventListener("click", async () => {
-            console.log(nameField.value &&
-                phoneField.value &&
-                timeField.value &&
-                dateField.value)
-            if (
+        function func(param, number) {
+            return undefined;
+        }
+
+        if (
                 nameField.value.length >= 1 &&
                 phoneField.value.length >= 1 &&
                 timeField.textContent.length >= 1 &&
                 dateField.value.length >= 1
             ) {
+
                 let data = window.availableAppointments[window.activeAppointment]
-                console.log(window.availableAppointments)
-                console.log(data)
-                console.log(window.activeAppointment)
                 let aElementBarber = document.querySelector(".active")
                 await makeRequestToMakeAppointment(
                     nameField.value,
