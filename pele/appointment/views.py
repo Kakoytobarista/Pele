@@ -32,6 +32,7 @@ def index(request):
 
 def success_appointment(request):
     template = 'appointment/success_appointment.html'
-    send_mail_custom(request)
+    name, date, time, email = request.session["name"], request.session["date"], request.session["time"], request.session["email"]
+    send_mail_custom(name, date, time, email)
     return render(request=request,
                   template_name=template)

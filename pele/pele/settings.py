@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_crontab',
     'django_filters',
     'phonenumber_field',
     'django_extensions',
@@ -66,8 +67,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 5,
 }
 
-WSGI_APPLICATION = 'pele.wsgi.application'
+CRONJOBS = [
+    ('*/3 * * * *', 'core.cron.notification_job', '>> ' + os.path.join(BASE_DIR, 'log.txt' + ' 2>&1 '))
+]
 
+WSGI_APPLICATION = 'pele.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -91,7 +95,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Belgrade'
@@ -100,10 +103,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'appointment:index'
-
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.yandex.ru'

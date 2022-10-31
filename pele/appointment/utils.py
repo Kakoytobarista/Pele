@@ -14,18 +14,19 @@ def convert_to_day_month_year(date):
     return reformat
 
 
-def send_mail_custom(request):
+def send_mail_custom(name, date,
+                     time, email,
+                     mail_subject='You have successfully booked an appointment to haircut!'):
     """
     Function for send email for confirmation email address.
     """
-    mail_subject = 'You have successfully booked an appointment to haircut!'
     context = {
-        "name": request.session["name"],
-        "date": convert_to_day_month_year(request.session["date"]),
-        "time": request.session["time"]
+        "name": name,
+        "date": convert_to_day_month_year(date),
+        "time": time
     }
-    send_mail(mail_subject, request.session["name"], settings.EMAIL_HOST_USER,
-              [request.session["email"]], fail_silently=False,
+    send_mail(mail_subject, name, settings.EMAIL_HOST_USER,
+              [email], fail_silently=False,
               html_message=get_template("email_letter.html").render(context))
 
 
