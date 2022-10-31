@@ -12,13 +12,17 @@
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
       <ul class="nav nav-pills">
       {% with request.resolver_match.view_name as view_name %}
+      <li class="nav-item">
+      <a class="nav-link {% if view_name == 'appointment:index' %}text-info{% endif %}"
+            href="{% url 'appointment:index' %}">Make ap appointment</a>
+      </li>
       {% if user.is_authenticated %}
         <li class="nav-item">
-        <a class="nav-link {% if view_name == 'users:password_change_form' %}active{% endif %}"
-              href="{% url 'users:password_change_form' %}">Изменить пароль</a>
+        <a class="nav-link {% if view_name == 'users:password_change_form' %}text-info{% endif %}"
+              href="{% url 'users:password_change_form' %}">Change password</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:logout' %}">Выйти</a>
+          <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
         </li>
         <li id="text_user">
           <a><img src="{% static 'img/download.png' %}" width="30" height="30">
@@ -29,12 +33,12 @@
         {% endif %}
           {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link {% if view_name == 'users:login' %}active{% endif %}"
-             href="{% url 'users:login' %}">Войти</a>
+          <a class="nav-link {% if view_name == 'users:login' %}text-info{% endif %}"
+             href="{% url 'users:login' %}">Log in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if view_name == 'users:signup' %}active{% endif %}"
-             href="{% url 'users:signup' %}">Регистрация</a>
+          <a class="nav-link {% if view_name == 'users:signup' %}text-info{% endif %}"
+             href="{% url 'users:signup' %}">Registration</a>
         </li>
           {% endif %}
         {% endwith %}

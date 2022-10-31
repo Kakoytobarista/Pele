@@ -5,6 +5,9 @@ import {getAvailableAppointment} from "./handlers.js";
 
 async function addBarbersText() {
     window.barbers = requestGetBarbers().then(async (data) => {
+        console.log(data)
+        console.log(data)
+        console.log(data)
         return data
     })
     for (let i = 0; i < await window.barbers.then((data => {
@@ -12,7 +15,7 @@ async function addBarbersText() {
     })); i++) {
         barbersElements[i].textContent = await window.barbers.then((data => {
             barbersElements[i].setAttribute("id_barber", data[i]["id"])
-            return data[i]["barber_first_name"]
+            return `${data[i]["first_name"]} ${data[i]["last_name"]}`
         }))
         barbersElements[i].setAttribute("check", "barber")
     }
@@ -36,6 +39,5 @@ async function wrapperCheckTimeOut() {
 }
 
 
-
-await wrapperCheckTimeOut()
 await addBarbersText()
+await wrapperCheckTimeOut()

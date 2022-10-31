@@ -5,6 +5,7 @@ from appointment.models import Appointment
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
+    ordering = ('time_begin',)
 
     date_hierarchy = "date"
     fields = (
@@ -33,9 +34,9 @@ class AppointmentAdmin(admin.ModelAdmin):
         "is_available",
         'barber',
     )
-    empty_value_display = "--- EMPTY ---"
     list_filter = (
         'is_available',
+        'barber__role',
         'barber'
     )
     search_fields = (
@@ -45,4 +46,4 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_display_links = (
         'date',
     )
-    admin.site.empty_value_display = '(None)'
+

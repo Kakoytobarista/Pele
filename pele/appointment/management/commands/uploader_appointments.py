@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
-from django.db.models import Q
 
 from appointment.models import Appointment
 from appointment.utils import create_two_appointment_objects
@@ -40,7 +39,7 @@ class Command(BaseCommand):
     WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", ]
     SATURDAY = "Saturday"
     SUNDAY = "Closed"
-    BARBER_GEN = barber_generator(User.objects.filter(~Q(barber_first_name="")))
+    BARBER_GEN = barber_generator(User.objects.filter(role="barber_user"))
 
     def add_arguments(self, parser):
         parser.add_argument('date_start', type=str)
@@ -69,6 +68,8 @@ class Command(BaseCommand):
                         print("Change day")
                         date_start = date_start.combine(date_start, start_time_saturday)
                 else:
+                    print(date_start)
+                    print(date_start)
                     create_two_appointment_objects(appointment_object=Appointment,
                                                    date=date_start,
                                                    barber_gen=self.BARBER_GEN)
@@ -76,7 +77,7 @@ class Command(BaseCommand):
                     print(date_start.strftime("%A"))
                     print(date_start.time())
                     print("_______________")
-                    date_start += timedelta(minutes=60)
+                    date_start += timedelta(minutes=30)
 
             if date_start.strftime("%A") in self.SATURDAY:
                 if date_start.time() >= end_time_saturday:
@@ -96,4 +97,4 @@ class Command(BaseCommand):
                     print(date_start.strftime("%A"))
                     print(date_start.time())
                     print("_______________")
-                    date_start += timedelta(minutes=60)
+                    date_start += timedelta(minutes=30)

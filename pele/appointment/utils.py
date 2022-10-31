@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 from django.core.mail import send_mail
 from django.template.loader import get_template
@@ -6,18 +6,26 @@ from django.template.loader import get_template
 from pele import settings
 
 
-def send_mail_custom(request, data):
+def convert_to_day_month_year(date):
+    date = datetime.strptime(f'{date}', '%Y-%m-%d')
+    reformat = "{}-{}-{}".format(date.day,
+                                 date.month,
+                                 date.year)
+    return reformat
+
+
+def send_mail_custom(request):
     """
     Function for send email for confirmation email address.
     """
-
     mail_subject = 'You have successfully booked an appointment to haircut!'
     context = {
-        'name': data["name"],
-        'date': request.session["date"],
-        'time': request.session["time"]
+        "name": request.session["name"],
+        "date": convert_to_day_month_year(request.session["date"]),
+        "time": request.session["time"]
     }
-    send_mail(mail_subject, data["name"], settings.EMAIL_HOST_USER, [data["email"]], fail_silently=False,
+    send_mail(mail_subject, request.session["name"], settings.EMAIL_HOST_USER,
+              [request.session["email"]], fail_silently=False,
               html_message=get_template("email_letter.html").render(context))
 
 
@@ -42,9 +50,13 @@ def create_two_appointment_objects(appointment_object,
                                    barber_gen):
     appointment_object.objects.create(date=date,
                                       time_begin=date.time(),
-                                      time_end=(date + timedelta(minutes=60)).time(),
+                                      time_end=(date + timedelta(minutes=30)).time(),
                                       barber=barber_gen.__next__())
     appointment_object.objects.create(date=date,
                                       time_begin=date.time(),
-                                      time_end=(date + timedelta(minutes=60)).time(),
+                                      time_end=(date + timedelta(minutes=30)).time(),
+                                      barber=barber_gen.__next__())
+    appointment_object.objects.create(date=date,
+                                      time_begin=date.time(),
+                                      time_end=(date + timedelta(minutes=30)).time(),
                                       barber=barber_gen.__next__())

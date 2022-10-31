@@ -22,8 +22,6 @@ function delValueFromAppointment(id) {
     emailField.textContent = ""
     dateField.textContent = ""
     commentField.textContent = ""
-
-
 }
 
 async function dropdown() {
@@ -41,19 +39,17 @@ async function dropdown() {
 
 async function makeAppointment() {
     await btnSubmit.addEventListener("click", async () => {
-        function func(param, number) {
-            return undefined;
-        }
-
+        console.log("Make appointment WE ARE HERE!")
         if (
                 nameField.value.length >= 1 &&
                 phoneField.value.length >= 1 &&
-                timeField.textContent.length >= 1 &&
+                timeField.value.length >= 1 &&
                 dateField.value.length >= 1
             ) {
 
                 let data = window.availableAppointments[window.activeAppointment]
                 let aElementBarber = document.querySelector(".active")
+                console.log(data)
                 await makeRequestToMakeAppointment(
                     nameField.value,
                     emailField.value,
@@ -70,7 +66,6 @@ async function makeAppointment() {
             }
         }
     )
-
 }
 
 
@@ -85,4 +80,3 @@ await isClickToDateField()
 // 1. Dropdown
 // 2. Fill data
 // 3. Checkbox
-
