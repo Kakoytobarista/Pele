@@ -27,6 +27,7 @@ class AppointmentCreateSerializer(serializers.ModelSerializer):
             'date',
             'time_begin',
             'time_end',
+            'comment',
         )
         read_only_fields = ('date',
                             'time_begin',
@@ -53,6 +54,19 @@ class AppointmentSerializer(ReadOnlyModelSerializer):
             'time_end',
             'is_available',
             'comment',
+            'barber',
+        )
+
+
+class AppointmentCustomSerializer(serializers.ModelSerializer):
+    """
+    Serializer for model Appointment. This serializer work
+    for creating data.
+    """
+    class Meta:
+        model = Appointment
+        fields = (
+            'date',
             'barber',
         )
 

@@ -12,6 +12,7 @@ def get_queryset_for_available_appointment(data, appointment_obj):
         queryset = appointment_obj.objects.filter(date=date_db,
                                                   time_begin__gt=current_time,
                                                   is_available=True, barber=data.get('barber'))
+
     else:
         queryset = appointment_obj.objects.filter(date=date_db,
                                                   is_available=True,

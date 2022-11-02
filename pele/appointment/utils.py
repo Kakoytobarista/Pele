@@ -26,7 +26,7 @@ def send_mail_custom(name, date,
         "time": time
     }
     send_mail(mail_subject, name, settings.EMAIL_HOST_USER,
-              [email], fail_silently=False,
+              [email], fail_silently=True,
               html_message=get_template("email_letter.html").render(context))
 
 

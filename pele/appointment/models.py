@@ -55,10 +55,9 @@ class Appointment(models.Model):
         return f"Appointment: {self.date}, {self.time_begin}-{self.time_end}"
 
     class Meta:
-        ordering = ['-date']
-        unique_together = (
-            'date',
-            'time_begin',
-            'time_end',
-            'barber',
-        )
+        ordering = ['date']
+        constraints = [
+            models.UniqueConstraint(fields=['date', 'time_begin',
+                                            'time_end', 'barber'],
+                                    name='unique appointment')
+        ]

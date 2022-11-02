@@ -8,7 +8,9 @@ from rest_framework import viewsets
 from api.mixins import AppointmentMixinViewSet
 from api.utils import get_queryset_for_available_appointment
 from appointment.models import Appointment
-from api.serializers import AppointmentSerializer, AppointmentCreateSerializer, UserSerializer
+from api.serializers import AppointmentSerializer, AppointmentCreateSerializer, UserSerializer, \
+    AppointmentCustomSerializer
+
 from users.models import User
 
 
@@ -51,9 +53,13 @@ class AppointmentViewSet(AppointmentMixinViewSet):
     @action(methods=('post',), detail=False)
     def get_available_appointment_on_current_day(self, request):
         data = request.data
-        queryset = get_queryset_for_available_appointment(data=data,
-                                                          appointment_obj=Appointment)
+        serializer = AppointmentCustomSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        queryset = get_queryset_for_available_appointment(
+            data=serializer.data, appointment_obj=Appointment
+        )
         serializer = AppointmentSerializer(queryset, many=True)
+
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 

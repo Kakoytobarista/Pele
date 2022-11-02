@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-$wpx-y0n%_+_7*hkkg0(zq!og0kup5&=4ek&zoz@5w(kup10c6
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
@@ -68,7 +68,8 @@ REST_FRAMEWORK = {
 }
 
 CRONJOBS = [
-    ('*/3 * * * *', 'core.cron.notification_job', '>> ' + os.path.join(BASE_DIR, 'log.txt' + ' 2>&1 '))
+    ('10 8 * * *', 'core.cron.notification_job', '>> ' + os.path.join(BASE_DIR, 'log.txt' + ' 2>&1 ')),
+    ('*/3 * * * *', 'core.cron.remove_unusable_appointment', '>> ' + os.path.join(BASE_DIR, 'log_del_appointments.txt' + ' 2>&1 '))
 ]
 
 WSGI_APPLICATION = 'pele.wsgi.application'
