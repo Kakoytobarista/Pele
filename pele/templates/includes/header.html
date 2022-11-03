@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 
   <nav class="navbar navbar-expand-md bg-lightskyblue navbar-light border-bottom text-lg-end"">
     <div class="container-fluid ">
       <a class="navbar-brand" href="{% url 'appointment:index' %}">
         <img src="{% static 'img/logo.ico' %}" width="50" height="50" class="d-inline-block align-top" alt="">
-        <span style="color:red">PE</span>LE Barbershop
+        <span style="color:red">PE</span>LE Frizerski Salon
       </a>
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -12,17 +13,39 @@
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
       <ul class="nav nav-pills">
       {% with request.resolver_match.view_name as view_name %}
+
+
+      <li class="nav-item">
+        <form id="changeLocal" action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ redirect_to }}">
+          <select class="form-select" name="language">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              <option class="optionLang" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                      selected{% endif %}>
+                  {{ language.name_local }} ({{ language.code }})
+              </option>
+            {% endfor %}
+          </select>
+
+        </form>
+      </li>
+
+
       <li class="nav-item">
       <a class="nav-link {% if view_name == 'appointment:index' %}text-info{% endif %}"
-            href="{% url 'appointment:index' %}">Make ap appointment</a>
+            href="{% url 'appointment:index' %}">{% trans 'Make ap appointment' %}</a>
       </li>
       {% if user.is_authenticated %}
         <li class="nav-item">
         <a class="nav-link {% if view_name == 'users:password_change_form' %}text-info{% endif %}"
-              href="{% url 'users:password_change_form' %}">Change password</a>
+              href="{% url 'users:password_change_form' %}">{% trans 'Change password' %}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
+          <a class="nav-link" href="{% url 'users:logout' %}">{% trans 'Log out' %}</a>
         </li>
         <li id="text_user">
           <a><img src="{% static 'img/download.png' %}" width="30" height="30">
@@ -34,11 +57,11 @@
           {% if not user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link {% if view_name == 'users:login' %}text-info{% endif %}"
-             href="{% url 'users:login' %}">Log in</a>
+             href="{% url 'users:login' %}">{% trans 'Log in' %}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if view_name == 'users:signup' %}text-info{% endif %}"
-             href="{% url 'users:signup' %}">Registration</a>
+             href="{% url 'users:signup' %}">{% trans 'Registration' %}</a>
         </li>
           {% endif %}
         {% endwith %}

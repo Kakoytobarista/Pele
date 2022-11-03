@@ -1,7 +1,7 @@
 import {
     dateField,
     elementUlWithTextOfAppointments,
-    fieldDate,
+    fieldDate, localSelectElem,
     selectBody,
     selectItem
 } from "./constants.js";
@@ -92,11 +92,15 @@ export async function getAvailableAppointment() {
         }
 }
 
-export async function setFreeAppointmentSpots(func) {
-    dateField.addEventListener("change", async () => {
+export async function addEventChange(func, elem) {
+    elem.addEventListener("change", async () => {
         func()
         }
     )
+}
+
+export function changeFunc(){
+    document.querySelector('form').submit();
 }
 
 

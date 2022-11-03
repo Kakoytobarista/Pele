@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'api.apps.ApiConfig',
     'appointment.apps.AppointmentConfig',
     'users.apps.UsersConfig',
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -101,6 +103,19 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Europe/Belgrade'
 
 USE_I18N = True
+
+USE_L1ON = True
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+get_text = lambda s: s
+LANGUAGES = (
+    ('sr', get_text('Serbian')),
+    ('en', get_text('English')),
+)
+
 
 USE_TZ = True
 

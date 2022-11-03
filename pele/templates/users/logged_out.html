@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Вы вышли из системы{% endblock %}
+{% load i18n %}
 {% block content %}
-{% with card_header='Выход' card_body='Вы вышли из своей учётной записи. Ждём вас снова!' %}
-{% include 'users/includes/card.html' %}
-{% endwith %}
+<div class="row justify-content-center">
+  <div class="col-md-8 p-5">
+    <div class="card">
+      <div class="card-header">{% trans 'Log out' %}</div>
+      <div class="card-body text-center">{% trans 'You are logged out of your account. We are waiting for you again!' %}
+      </div> <!-- card body -->
+    </div> <!-- card -->
+  </div> <!-- col -->
+</div> <!-- row -->
 {% endblock %}

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Войти{% endblock %}
+{% load i18n %}
+{% block title %}Log in{% endblock %}
 {% block content %}
 {% load user_filters %}
-  {% with card_header='Авторизация' %}
+  {% with card_header='Authorization' %}
     {% include 'users/includes/header_card.html' %}
       {% endwith %}
   {% if form.errors %}
@@ -51,10 +52,10 @@
   {% endfor %}
   <div class="col text-center">
     <button type="submit" class="btn btn-primary">
-      Войти
+      {% trans 'Log in' %}
     </button>
     <a href="{% url 'users:password_reset_form' %}" class="btn">
-      Забыли пароль?
+      {% trans 'Forgot your password?' %}
     </a>
   </div>
   </form>

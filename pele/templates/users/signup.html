@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Зарегистрироваться{% endblock %}
 {% block content %}
-{% with card_header='Зарегистрироваться' %}
+{% load i18n %}
+{% with card_header='Registration' %}
 {% include 'users/includes/header_card.html' %}
   {% endwith %}
       {% load user_filters %}
@@ -48,7 +49,7 @@
           {% endfor %}
           <div class="col text-center">
             <button type="submit" class="btn btn-primary">
-              Зарегистрироваться
+              {% trans 'Registration' %}
             </button>
           </div>
         </form>

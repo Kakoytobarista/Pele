@@ -1,10 +1,11 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 from appointment.models import Appointment
 
 
 @admin.register(Appointment)
-class AppointmentAdmin(admin.ModelAdmin):
+class AppointmentAdmin(TranslationAdmin):
     ordering = ('time_begin',)
 
     date_hierarchy = "date"
