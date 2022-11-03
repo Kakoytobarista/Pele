@@ -4,9 +4,7 @@
 <section>
     <div>
         <h2>{{ request.session.name }}, {% trans 'you have successfully booked to the barbershop!' %}</h2>
-        <p>{% trans 'All registration information will be sent to you by e-mail' %} - {{ request.session.email }}<br>
-            {% trans 'if you have indicated it. Date of your appointment' %}: {{ request.session.date }}.<br>
-            {% trans 'Time of your appointment' %}: {{ request.session.time }}
+        <p>{% trans 'All registration information will be sent to you by e-mail (if you have indicated it).' %}<br>
 <br><br>{% trans 'Kind regards PELE Barbershop.' %}</p>
 
     </div>

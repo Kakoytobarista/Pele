@@ -153,6 +153,7 @@ main {
 
 
 #footer {
+
   margin-top: 30px;
   left: 0;
   bottom: 0;
@@ -264,11 +265,11 @@ header {
   position: absolute;
   top: 64px;
   left: 0;
-  width: 55%;
+  width: 60%;
   max-height: 379px;
-  padding: 24px 16px;
+  padding: 30px 2px;
   background: #FFFFFF;
-  border: 2px solid rgba(125, 138, 253, 0.3);
+  border: 1px solid rgba(125, 138, 253, 0.3);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   overflow-y: scroll;
@@ -359,6 +360,12 @@ input[type="radio"]:checked::before {
 }
 
 
+/*!**! Scroll bar*/
+
+
+::-webkit-scrollbar {
+  width: 0;
+}
 
 /*!**! Nav bar*/
 

@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}Custom 404{% endblock %}
 {% block content %}
+<div class="text-center">
   <h1>Custom 404</h1>
-  <p>Страницы с адресом {{ path }} не существует</p>
-  <a href="{% url 'home:index' %}"> Идите на главную</a>
+  <p>{% trans 'Page not found, try again later' %}</p>
+  <a class="btn-group-vertical" href="{% url 'appointment:index' %}">{% trans 'Go to main page' %}</a>
+  </div>
 {% endblock %}

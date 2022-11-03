@@ -6,7 +6,7 @@ import {
 } from "./constants.js"
 
 import {
-    addAlert,
+    addAlert, addAttributeHideToElement,
     addAttributeShowToElement, addEventChange,
     getAvailableAppointment,
     isClickToDateField
@@ -28,6 +28,9 @@ async function dropdown() {
             const aElementBarber = document.querySelector(".active")
             if (fieldDate.value === "" || aElementBarber == null) {
                 addAlert("Select the date of the appointment to the barber")
+            }
+            else if (selectBody.style.display === "block") {
+                addAttributeHideToElement(selectBody);
             }
             else {
                 addAttributeShowToElement(selectBody);

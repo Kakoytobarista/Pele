@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-03 01:52+0100\n"
+"POT-Creation-Date: 2022-11-03 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,22 +56,24 @@ msgid "you have successfully booked to the barbershop!"
 msgstr "успешно сте резервисали берберницу!"
 
 #: templates/appointment/success_appointment.html:7
-msgid "All registration information will be sent to you by e-mail"
+#, fuzzy
+#| msgid "All registration information will be sent to you by e-mail"
+msgid ""
+"All registration information will be sent to you by e-mail (if you have "
+"indicated it)."
 msgstr "Све информације о регистрацији биће вам послате е-поштом"
 
 #: templates/appointment/success_appointment.html:8
-msgid "if you have indicated it. Date of your appointment"
-msgstr "ако сте то назначили. Датум вашег именовања"
-
-#: templates/appointment/success_appointment.html:9
-#, fuzzy
-#| msgid "Make ap appointment"
-msgid "Time of your appointment"
-msgstr "Заказати састанак"
-
-#: templates/appointment/success_appointment.html:10
 msgid "Kind regards PELE Barbershop."
 msgstr "Срдачан поздрав PELE Frizerski Salon"
+
+#: templates/core/404.html:7
+msgid "Page not found, try again later"
+msgstr "Страница није пронађена, покушајте поново касније"
+
+#: templates/core/404.html:8
+msgid "Go to main page"
+msgstr "Идите на главну страницу"
 
 #: templates/includes/footer.html:4
 msgid "Copyright"
@@ -101,7 +103,7 @@ msgstr "Регистрација"
 
 #: templates/users/logged_out.html:8
 msgid "You are logged out of your account. We are waiting for you again!"
-msgstr ""
+msgstr "Одјављени сте са свог налога. Чекамо вас поново!"
 
 #: templates/users/login.html:58
 msgid "Forgot your password?"
@@ -123,8 +125,7 @@ msgstr "Промени лозинку"
 msgid ""
 "Your password does not have to match or be similar to your name or other "
 "personal information."
-msgstr ""
-"Ваша лозинка не мора да одговара вашем имену или другом лична информација."
+msgstr "Ваша лозинка не мора да одговара вашем имену или другом лична информација."
 
 #: templates/users/password_change_form.html:41
 msgid "Your password mora and sadrzhi at least 8 characters."
@@ -149,6 +150,3 @@ msgstr "Адреса Е-поште"
 #: templates/users/password_reset_form.html:19
 msgid "Reset your password"
 msgstr "Ресетујте вашу лозинку"
-
-#~ msgid " Phone number "
-#~ msgstr "Број телефона"

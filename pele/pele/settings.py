@@ -1,6 +1,7 @@
 import os
-import smtplib
 from pathlib import Path
+
+from django.urls import reverse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -120,8 +121,6 @@ LANGUAGES = (
 
 USE_TZ = True
 
-LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'appointment:index'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-mail.outlook.com'
