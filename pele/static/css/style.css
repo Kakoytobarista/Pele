@@ -370,7 +370,6 @@ input[type="radio"]:checked::before {
     text-align: center;
 }
 
-
 .btn-primary {
   text-align: center;
 }
@@ -379,7 +378,7 @@ input[type="radio"]:checked::before {
   background-color: gray!important;
 }
 
-
 #text_user {
      border-radius: 10px 15px;
 }
+

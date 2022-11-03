@@ -1,4 +1,5 @@
 import os
+import smtplib
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,13 +124,14 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'appointment:index'
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST',
-                            default='django.app@yandex.ru')
+                            default='frizerskiSalonPele@outlook.com')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD',
-                                default='][p123!@#')
+                                default='qwe123!@#P{}')
 EMAIL_PORT = os.getenv('EMAIL_PORT',
                        default=587)
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
