@@ -13,10 +13,10 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'modeltranslation',
     'api.apps.ApiConfig',
     'appointment.apps.AppointmentConfig',
-    'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django_filters',
     'phonenumber_field',
     'django_extensions',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,11 @@ LANGUAGES = (
 
 USE_TZ = True
 
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'appointment:index'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'frizerskiSalonPele@outlook.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST',
