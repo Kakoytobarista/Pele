@@ -33,7 +33,7 @@ urlpatterns = [
         name='password_reset_form'
     ),
     path(
-        'reset/done/',
+        'password_reset/done/',
         PasswordResetDoneView.as_view(
             template_name='users/password_reset_done.html'),
         name='password_reset_done'
@@ -45,11 +45,15 @@ urlpatterns = [
         name='password_reset_confirm'
     ),
     path(
-        'reset/complete/',
+        'reset/done/',
         PasswordResetCompleteView.as_view(
             template_name='users/password_reset_complete.html'),
         name='password_reset_complete'
     ),
+
+
+
+
     path(
         'password_change_form/',
         PasswordChangeView.as_view(

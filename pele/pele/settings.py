@@ -13,10 +13,10 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
-    'modeltranslation',
     'api.apps.ApiConfig',
+    'modeltranslation',
     'appointment.apps.AppointmentConfig',
+    'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django_filters',
     'phonenumber_field',
     'django_extensions',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
