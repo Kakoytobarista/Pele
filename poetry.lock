@@ -158,6 +158,20 @@ django = ">=3.0"
 pytz = "*"
 
 [[package]]
+name = "isort"
+version = "5.10.1"
+description = "A Python utility / library to sort Python imports."
+category = "main"
+optional = false
+python-versions = ">=3.6.1,<4.0"
+
+[package.extras]
+colors = ["colorama (>=0.4.3,<0.5.0)"]
+pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
+plugins = ["setuptools"]
+requirements_deprecated_finder = ["pip-api", "pipreqs"]
+
+[[package]]
 name = "mbstrdecoder"
 version = "1.1.1"
 description = "multi-byte character string decoder"
@@ -318,7 +332,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "844985443c3cfed5e48f7ea07ef6f6d8aaa1ca25dd2810dd85a09bea239ae4b0"
+content-hash = "738545a2fe857d26b4934c81b988756ac9495642db88c2fd2c88f766123299f1"
 
 [metadata.files]
 asgiref = [
@@ -388,6 +402,10 @@ django-smtp-ssl = [
 djangorestframework = [
     {file = "djangorestframework-3.14.0-py3-none-any.whl", hash = "sha256:eb63f58c9f218e1a7d064d17a70751f528ed4e1d35547fdade9aaf4cd103fd08"},
     {file = "djangorestframework-3.14.0.tar.gz", hash = "sha256:579a333e6256b09489cbe0a067e66abe55c6595d8926be6b99423786334350c8"},
+]
+isort = [
+    {file = "isort-5.10.1-py3-none-any.whl", hash = "sha256:6f62d78e2f89b4500b080fe3a81690850cd254227f27f75c3a0c491a1f351ba7"},
+    {file = "isort-5.10.1.tar.gz", hash = "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"},
 ]
 mbstrdecoder = [
     {file = "mbstrdecoder-1.1.1-py3-none-any.whl", hash = "sha256:37a7739a365f1bf8aa5ff2de2d66b1a84e96dcb41868cc97c480c20b40c3670b"},

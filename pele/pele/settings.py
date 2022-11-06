@@ -116,7 +116,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'format': '{asctime} {levelname} {module} {process:d} {thread:d} {message}',
             'style': '{',
         },
         'simple': {
@@ -139,6 +139,11 @@ LOGGING = {
             'handlers': ['console', 'logfile'],
         },
         'appointment': {
+            'handlers': ['console', 'logfile'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'api': {
             'handlers': ['console', 'logfile'],
             'level': 'DEBUG',
             'propagate': True

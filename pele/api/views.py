@@ -1,17 +1,20 @@
-from rest_framework import status
+import logging
+
+from appointment.models import Appointment
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework import viewsets
+from users.models import User
 
 from api.mixins import AppointmentMixinViewSet
+from api.serializers import (AppointmentCreateSerializer,
+                             AppointmentCustomSerializer,
+                             AppointmentSerializer, UserSerializer)
 from api.utils import get_queryset_for_available_appointment
-from appointment.models import Appointment
-from api.serializers import AppointmentSerializer, AppointmentCreateSerializer, UserSerializer, \
-    AppointmentCustomSerializer
 
-from users.models import User
+logger = logging.getLogger(__name__)
 
 
 class AppointmentViewSet(AppointmentMixinViewSet):
@@ -23,6 +26,10 @@ class AppointmentViewSet(AppointmentMixinViewSet):
                          'delete', 'post', ]
 
     def get_serializer_class(self):
+        """
+        Method for getting desired serializer
+        :return: Serializer
+        """
         if self.request.method in ('put',
                                    'patch',
                                    'delete', ):
@@ -48,10 +55,15 @@ class AppointmentViewSet(AppointmentMixinViewSet):
         appointment_object.comment = data.get('comment', appointment_object.comment)
         appointment_object.is_available = False
         appointment_object.save()
+        logger.debug(f'PATCH request data: {data}')
         return Response(serializer.data, status.HTTP_206_PARTIAL_CONTENT)
 
     @action(methods=('post',), detail=False)
     def get_available_appointment_on_current_day(self, request):
+        """
+        Method for getting available appointment on current time
+        with filters: date, time, barber
+        """
         data = request.data
         serializer = AppointmentCustomSerializer(data=data)
         serializer.is_valid(raise_exception=True)
@@ -72,7 +84,11 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=('get',), detail=False)
     def get_barbers(self, request):
-        queryset = User.objects.filter(role="barber_user")
+        """
+        Method for getting available barbers
+        :param request:
+        :return:
+        """
+        queryset = User.objects.filter(role='barber_user')
         serializer = UserSerializer(queryset, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
-
