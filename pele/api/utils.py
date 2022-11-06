@@ -2,6 +2,13 @@ from datetime import datetime
 
 
 def get_queryset_for_available_appointment(data, appointment_obj):
+    """
+    Function for getting actual available appointments
+    with time not less with current and desired barber
+    :param data: data from request
+    :param appointment_obj: objects of class Appointment
+    :return: queryset
+    """
     current_time = datetime.now().time()
     current_date = datetime.now().date()
     date_db = datetime.strptime(data.get('date'), '%Y-%m-%d').date()

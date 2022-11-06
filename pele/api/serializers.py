@@ -1,6 +1,5 @@
-from rest_framework import serializers
-
 from appointment.models import Appointment
+from rest_framework import serializers
 from users.models import User
 
 

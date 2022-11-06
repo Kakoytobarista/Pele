@@ -40,10 +40,10 @@ class AppointmentViewSet(AppointmentMixinViewSet):
     def partial_update(self, request, *args, **kwargs):
         """
         Partial update appointment object
-        :param request:
-        :param args:
-        :param kwargs:
-        :return:
+        :param request: Request
+        :param args: args
+        :param kwargs: kwargs
+        :return: Response
         """
         appointment_object = get_object_or_404(Appointment, id=kwargs['pk'])
         data = request.data
@@ -86,8 +86,8 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_barbers(self, request):
         """
         Method for getting available barbers
-        :param request:
-        :return:
+        :param request: Request
+        :return: Response
         """
         queryset = User.objects.filter(role='barber_user')
         serializer = UserSerializer(queryset, many=True)
