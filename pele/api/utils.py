@@ -1,7 +1,10 @@
 from datetime import datetime
 
+from appointment.models import Appointment
 
-def get_queryset_for_available_appointment(data, appointment_obj):
+
+def get_queryset_for_available_appointment(data: dict,
+                                           appointment_obj: Appointment()):
     """
     Function for getting actual available appointments
     with time not less with current and desired barber

@@ -51,8 +51,6 @@ export const makeRequestToMakeAppointment = async function (name, email,
     }
 }
 
-
-
 export const requestGetBarbers = async function () {
     try {
         let response = await fetch(`${mainApiUrl}/users/get_barbers/`, {

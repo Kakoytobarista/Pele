@@ -8,7 +8,7 @@ from appointment.models import Appointment
 class AppointmentAdmin(TranslationAdmin):
     ordering = ('time_begin',)
 
-    date_hierarchy = "date"
+    date_hierarchy = 'date'
     fields = (
         'name',
         'date',
@@ -21,18 +21,18 @@ class AppointmentAdmin(TranslationAdmin):
         'barber',
     )
     list_display = (
-        "name",
-        "date",
-        "time_begin",
-        "time_end",
-        "is_available",
+        'name',
+        'date',
+        'time_begin',
+        'time_end',
+        'is_available',
         'barber',
     )
     list_editable = (
-        "name",
-        "time_begin",
-        "time_end",
-        "is_available",
+        'name',
+        'time_begin',
+        'time_end',
+        'is_available',
         'barber',
     )
     list_filter = (

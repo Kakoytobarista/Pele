@@ -52,7 +52,7 @@ class Appointment(models.Model):
             raise ValidationError({'time_end': 'End date cannot be smaller then start date.'})
 
     def __str__(self):
-        return f"Appointment: {self.date}, {self.time_begin}-{self.time_end}"
+        return f'Appointment: {self.date}, {self.time_begin}-{self.time_end}'
 
     class Meta:
         ordering = ['date']

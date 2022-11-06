@@ -1,12 +1,11 @@
-from datetime import datetime, timedelta
 import logging
-
-from django.core.management.base import BaseCommand
+from datetime import datetime, timedelta
+from typing import Dict, Generator, List
 
 from appointment.models import Appointment
 from appointment.utils import create_two_appointment_objects
+from django.core.management.base import BaseCommand, CommandParser
 from users.models import User
-
 
 logger = logging.getLogger(__name__)
 
@@ -14,8 +13,8 @@ logger = logging.getLogger(__name__)
 def myIter(seq: list):
     """
     You can use 2 loop
-    :param seq:
-    :return:
+    :param seq: list with elements
+    :return: yield of generator
     """
     count = 0
     while True:
@@ -26,7 +25,12 @@ def myIter(seq: list):
             count += 1
 
 
-def barber_generator(barbers):
+def barber_generator(barbers: Generator):
+    """
+    Infinity generator
+    :param barbers: elements of barbers
+    :return: yield Barber object
+    """
     while True:
         for w in barbers:
             yield w
@@ -34,22 +38,28 @@ def barber_generator(barbers):
 
 class Command(BaseCommand):
     """
-    Function for uploading appointments to
-    db.
-    :param appointments_cont:
-    :param date: date from we will create appointments
-    :return:
+    Object for uploading appointments to DB
     """
     WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", ]
     SATURDAY = "Saturday"
     SUNDAY = "Closed"
     BARBER_GEN = barber_generator(User.objects.filter(role="barber_user"))
 
-    def add_arguments(self, parser):
+    def add_arguments(self, parser: CommandParser):
+        """
+        :param parser: argument for getting data from console
+        :return: None
+        """
         parser.add_argument('date_start', type=str)
         parser.add_argument('date_end', type=str)
 
-    def handle(self, *args, **options):
+    def handle(self, *args: List, **options: Dict):
+        """
+        Method for create appointment and save it in Data base
+        :param args: not name var
+        :param options: var with name (dict..)
+        :return:  None
+        """
         date_start_str = options['date_start']
         date_end_str = options['date_end']
         start_time_weekdays = datetime.strptime(f'{date_start_str} 9:00AM', '%Y-%m-%d %I:%M%p').time()

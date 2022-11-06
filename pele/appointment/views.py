@@ -1,16 +1,20 @@
 import json
 import uuid
 
-import logging
-
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+from rest_framework.request import Request
 from rest_framework.reverse import reverse
-
-from appointment.utils import send_mail_custom
 from users.models import User
 
+from appointment.utils import send_mail_custom
 
-def index(request):
+
+def index(request: Request):
+    """
+    View function for getting appointment page
+    :param request: Request
+    :return: Response
+    """
     template = 'appointment/index.html'
     if request.method == "POST" or None:
         name, date, time, email = request.POST["name"], \
@@ -41,6 +45,12 @@ def index(request):
 
 
 def success_appointment(request):
+    """
+    View function for getting success page after
+    making appointment
+    :param request: Requst
+    :return: Response
+    """
     if request.session.get('token'):
         template = 'appointment/success_appointment.html'
         request.session["token"] = None

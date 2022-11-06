@@ -16,7 +16,7 @@ def notification_job():
                              date=appointment.date,
                              time=appointment.time_begin,
                              email=appointment.email,
-                             mail_subject="Notification about today visit")
+                             mail_subject='Notification about today visit')
 
 
 def remove_unusable_appointment():

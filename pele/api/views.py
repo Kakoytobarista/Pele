@@ -1,5 +1,7 @@
 import logging
 
+from rest_framework.request import Request
+
 from appointment.models import Appointment
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
@@ -37,7 +39,8 @@ class AppointmentViewSet(AppointmentMixinViewSet):
 
         return AppointmentSerializer
 
-    def partial_update(self, request, *args, **kwargs):
+    def partial_update(self, request: Request,
+                       *args, **kwargs):
         """
         Partial update appointment object
         :param request: Request
