@@ -1,4 +1,10 @@
+# IDEA
 .idea/
-/.poetry.lock
 
+# POETRY
+/.poetry.lock
 /.pyproject.toml
+
+# LOGGING
+/pele/logs
+log_del_appointments.txt

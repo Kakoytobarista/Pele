@@ -31,10 +31,10 @@
                         <input type="date" id="date" name="date" required>
                     </div>
                     <div>
-                        <div class="select__item" required="true">
+                        <div class="select__item">
                             <label for="time">{% trans 'Appointment Time' %}</label>
-                            <input readonly="true" name="time" type="text" id="time" class="select__output"
-                                   tabindex="1">
+                            <input onkeypress="return false;" name="time" type="text" id="time" class="select__output"
+                                   tabindex="1" required>
                             <div class="select__content"></div>
                             </input>
                             <div class="select__body" style="display: none;">

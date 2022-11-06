@@ -1,7 +1,18 @@
 import os
 from pathlib import Path
 
-from django.urls import reverse
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+
+sentry_sdk.init(
+    dsn="https://0e2c2c60ea8741e29307fd3b1b048d8e@o1110399.ingest.sentry.io/6139229",
+    integrations=[
+        DjangoIntegration(),
+    ],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -99,6 +110,41 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'logfile': {
+            'class': 'logging.FileHandler',
+            'filename': str(BASE_DIR) + '/logs/django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'class': 'logging.StreamHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'logfile'],
+        },
+        'appointment': {
+            'handlers': ['console', 'logfile'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+    },
+}
 
 LANGUAGE_CODE = 'en-us'
 

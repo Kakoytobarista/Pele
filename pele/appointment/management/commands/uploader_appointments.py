@@ -1,10 +1,14 @@
 from datetime import datetime, timedelta
+import logging
 
 from django.core.management.base import BaseCommand
 
 from appointment.models import Appointment
 from appointment.utils import create_two_appointment_objects
 from users.models import User
+
+
+logger = logging.getLogger(__name__)
 
 
 def myIter(seq: list):
@@ -52,49 +56,43 @@ class Command(BaseCommand):
         end_time_weekdays = datetime.strptime(f'{date_start_str} 8:00PM', '%Y-%m-%d %I:%M%p').time()
 
         start_time_saturday = datetime.strptime(f'{date_start_str} 10:00AM', '%Y-%m-%d %I:%M%p').time()
-        end_time_saturday = datetime.strptime(f'{date_start_str} 3:00PM', '%Y-%m-%d %I:%M%p').time()
+        end_time_saturday = datetime.strptime(f'{date_start_str} 4:00PM', '%Y-%m-%d %I:%M%p').time()
 
         date_start = datetime.strptime(f'{date_start_str} 9:00AM', '%Y-%m-%d %I:%M%p')
         date_end = datetime.strptime(f'{date_end_str} 9:00AM', '%Y-%m-%d %I:%M%p')
+
+        if datetime.now() > date_start:
+            return None
 
         while date_start < date_end:
             if date_start.strftime("%A") in self.WEEKDAYS:
                 if date_start.time() >= end_time_weekdays:
                     date_start += timedelta(days=1)
                     if date_start.strftime("%A") in self.WEEKDAYS:
-                        print("Change day")
                         date_start = date_start.combine(date_start, start_time_weekdays)
                     else:
-                        print("Change day")
+                        logger.debug(f'Change day to {date_start.date()}')
                         date_start = date_start.combine(date_start, start_time_saturday)
                 else:
-                    print(date_start)
-                    print(date_start)
                     create_two_appointment_objects(appointment_object=Appointment,
                                                    date=date_start,
                                                    barber_gen=self.BARBER_GEN)
-                    print("Created Objects")
-                    print(date_start.strftime("%A"))
-                    print(date_start.time())
-                    print("_______________")
+                    logger.debug(f'Created Objects {date_start.strftime("%A")} - {date_start}')
                     date_start += timedelta(minutes=30)
 
-            if date_start.strftime("%A") in self.SATURDAY:
+            if date_start.strftime("%A") == self.SATURDAY:
                 if date_start.time() >= end_time_saturday:
                     date_start += timedelta(days=2)
                     if date_start.strftime("%A") == self.SATURDAY:
-                        print("Change day")
+                        logger.debug(f'Change day to {date_start.date()}')
                         date_start = date_start.combine(date_start, start_time_weekdays)
                     else:
-                        print("Change day")
                         date_start = date_start.combine(date_start, start_time_weekdays)
+                        logger.debug(f'Change day to {date_start.date()}')
 
                 else:
                     create_two_appointment_objects(appointment_object=Appointment,
                                                    date=date_start,
                                                    barber_gen=self.BARBER_GEN)
-                    print("Created Objects")
-                    print(date_start.strftime("%A"))
-                    print(date_start.time())
-                    print("_______________")
+                    logger.debug(f'Created Objects {date_start.strftime("%A")} - {date_start}')
                     date_start += timedelta(minutes=30)
