@@ -79,12 +79,15 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PERMISSION_CLASSES':
     ['rest_framework.permissions.IsAuthenticatedOrReadOnly', ],
-    'PAGE_SIZE': 5,
 }
 
 CRONJOBS = [
-    ('10 8 * * *', 'core.cron.notification_job', '>> ' + os.path.join(BASE_DIR, 'log.txt' + ' 2>&1 ')),
-    ('*/3 * * * *', 'core.cron.remove_unusable_appointment', '>> ' + os.path.join(BASE_DIR, 'log_del_appointments.txt' + ' 2>&1 '))
+    ('10 8 * * *', 'core.cron.notification_job', '>> '
+     + os.path.join(BASE_DIR, 'logs/notif_appointment.log' + ' 2>&1 ')),
+    ('0 0 * * MON', 'core.cron.remove_unusable_appointment_job', '>> '
+     + os.path.join(BASE_DIR, 'logs/del_appointment.log' + ' 2>&1 ')),
+    ('0 0 * * MON', 'core.cron.clean_log_file_job', '>> '
+     + os.path.join(BASE_DIR, 'logs/clean_log_appointment.log' + ' 2>&1 ')),
 ]
 
 WSGI_APPLICATION = 'pele.wsgi.application'
@@ -131,12 +134,14 @@ LOGGING = {
             'formatter': 'verbose',
         },
         'console': {
-            'class': 'logging.StreamHandler'
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
         }
     },
     'loggers': {
         'django': {
             'handlers': ['console', 'logfile'],
+
         },
         'appointment': {
             'handlers': ['console', 'logfile'],
@@ -144,6 +149,11 @@ LOGGING = {
             'propagate': True
         },
         'api': {
+            'handlers': ['console', 'logfile'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'core.cron': {
             'handlers': ['console', 'logfile'],
             'level': 'DEBUG',
             'propagate': True
@@ -168,7 +178,6 @@ LANGUAGES = (
     ('sr', get_text('Serbian')),
     ('en', get_text('English')),
 )
-
 
 USE_TZ = True
 
