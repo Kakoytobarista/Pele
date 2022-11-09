@@ -23,7 +23,8 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '104.248.27.6',
+                 'pele.myvnc.com']
 
 
 INSTALLED_APPS = [
@@ -211,10 +212,7 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, '/static')
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
