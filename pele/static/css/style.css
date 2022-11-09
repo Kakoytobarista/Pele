@@ -394,17 +394,18 @@ input[type="radio"]:checked::before {
 
 /*# Footer*/
 
-#footer {
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height:20px;   /* Height of the footer */
-}
-
 @media only screen and (max-width: 600px) {
   #footer {
-    margin-top: 30px
+    margin-top: 50px;
+    position: static!important;
+
   }
 }
 
 
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height: 0;   /* Height of the footer */
+}
