@@ -5,7 +5,7 @@
 {% block content %}
 <div>
     <div>
-        <div id="form_appointment" class="container">
+        <div id="form_appointment" class="container col-sm-9 col-md-7 col-lg-6 col-xl-5 col-11">
             <form method="post" enctype="multipart/form-data"><br>
                 {% csrf_token %}
                 <label for="name">{% trans 'First Name and Second name' %}</label>
@@ -28,7 +28,7 @@
                 <div>
                     <div>
                         <label for="date">{% trans 'Appointment Date' %}</label>
-                        <input type="date" id="date" name="date" required>
+                        <input data-swal-toast-template="#my-template" type="date" id="date" name="date" required>
                     </div>
                     <div>
                         <div class="select__item">

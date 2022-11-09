@@ -7,12 +7,36 @@ import {
 } from "./constants.js";
 import {getAvailableAppointments} from "./requests.js";
 
-
 export function addAlert(text) {
     Swal.fire({
         title: text,
-        confirmButtonColor: '#944743',
+        confirmButtonColor: '#6c757d',
     })
+}
+
+export function addComplete() {
+    let timerInterval
+    Swal.fire({
+      title: '<strong>We make an appointment for you.</strong><br>',
+      html: '<br>I will close in <b></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 200)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+  }
+})
 }
 
 function setAttributes(el, attrs) {

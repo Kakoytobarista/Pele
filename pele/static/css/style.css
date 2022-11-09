@@ -35,13 +35,22 @@ section {
 }
 
 .container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-   max-width:500px;
-margin:auto;
+  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-left: 30px;
+  border: 1px solid #ccc;
+  box-shadow: 7px 7px 15px #592A08;
+  border-radius: 30px;
 }
+
+
+/*.container {*/
+/*  padding: 20px 20px 20px 20px;*/
+/*  border: 1px solid lightgrey;*/
+/*  border-radius: 30px;*/
+/*   max-width:500px;*/
+/*  margin:auto;*/
+/*}*/
 
 .container1 {
   background-color: #f2f2f2;
@@ -144,24 +153,12 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    flex-direction: column;
 }
 
 main {
   margin-top: 2%;
 }
-
-
-#footer {
-
-  margin-top: 30px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-}
-
-
 
 .navbar-brand {
     padding-left: 30px;
@@ -181,17 +178,23 @@ main {
 }
 
 #form_appointment {
-  width: 45%;
+  /*min-width: 20%;*/
+  /*max-width: 70%;*/
 
 }
+/*header*/
 
 header {
   margin-bottom: 20px;
    border-bottom-color: black;
 }
+.nav nav-pills {
+  float: right;
+}
 
 
 #btn_submit {
+  margin-top: 30px;
     background-color: white;
     color: black;
     border: 1px solid #dee2e6!important; /* Green */
@@ -388,4 +391,20 @@ input[type="radio"]:checked::before {
 #text_user {
      border-radius: 10px 15px;
 }
+
+/*# Footer*/
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:20px;   /* Height of the footer */
+}
+
+@media only screen and (max-width: 600px) {
+  #footer {
+    margin-top: 30px
+  }
+}
+
 

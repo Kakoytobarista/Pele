@@ -2,12 +2,12 @@ import {makeRequestToMakeAppointment} from "./requests.js";
 import {
     fieldDate, selectItem, selectBody, dateField,
     nameField, emailField,
-    phoneField, timeField, commentField, btnSubmit, localSelectElem
+    phoneField, timeField, commentField, btnSubmit
 } from "./constants.js"
 
 import {
     addAlert, addAttributeHideToElement,
-    addAttributeShowToElement, addEventChange,
+    addAttributeShowToElement, addComplete, addEventChange,
     getAvailableAppointment,
     isClickToDateField
 } from "./handlers.js"
@@ -63,6 +63,7 @@ async function makeAppointment() {
                     data["id"],
                     Number(aElementBarber.getAttribute("id_barber"))
                     )
+                addComplete()
 
                 delValueFromAppointment(window.activeAppointment)
             }

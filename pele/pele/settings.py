@@ -1,12 +1,15 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 
+load_dotenv()
+
 sentry_sdk.init(
-    dsn="https://0e2c2c60ea8741e29307fd3b1b048d8e@o1110399.ingest.sentry.io/6139229",
+    dsn=os.getenv('SENTRY_KEY'),
     integrations=[
         DjangoIntegration(),
     ],
@@ -16,11 +19,11 @@ sentry_sdk.init(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-$wpx-y0n%_+_7*hkkg0(zq!og0kup5&=4ek&zoz@5w(kup10c6'
+SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -92,12 +95,26 @@ CRONJOBS = [
 
 WSGI_APPLICATION = 'pele.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': os.getenv('DB_NAME', default='postgres'),
+            'USER': os.getenv('POSTGRES_USER', default='postgres'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
+            'HOST': os.getenv('DB_HOST', default='db'),
+            'PORT': os.getenv('DB_PORT', default='5432')
+        }
+    }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -188,16 +205,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'frizerskiSalonPele@outlook.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-mail.outlook.com'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST',
-                            default='frizerskiSalonPele@outlook.com')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD',
-                                default='qwe123!@#P{}')
-EMAIL_PORT = os.getenv('EMAIL_PORT',
-                       default=587)
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
