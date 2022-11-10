@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -197,7 +198,7 @@ LANGUAGES = (
     ('en', get_text('English')),
 )
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+CORS_ORIGIN_ALLOW_ALL = True
 
 USE_TZ = True
 
