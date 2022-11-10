@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'appointment.apps.AppointmentConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -199,6 +200,10 @@ LANGUAGES = (
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3030',
+    'http://127.0.0.1:8000',
+]
 
 USE_TZ = True
 
