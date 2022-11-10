@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'appointment.apps.AppointmentConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_crontab',
     'django_filters',
+    'corsheaders',
     'phonenumber_field',
     'django_extensions',
 ]
