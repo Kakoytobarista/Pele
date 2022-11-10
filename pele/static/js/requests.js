@@ -1,4 +1,4 @@
-const mainApiUrl = 'http://127.0.0.1:8000/api'
+const mainApiUrl = 'https://pele.myvnc.com/api'
 const headersParams = {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
