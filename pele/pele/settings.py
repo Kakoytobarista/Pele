@@ -64,12 +64,14 @@ CORS_ORIGIN_WHITELIST = (
     'https://localhost:8000',
     'https://pele.myvnc.com',
     'https://104.248.27.6',
+    'http://127.0.0.1:8000',
 )
 
 CSRF_TRUSTED_ORIGINS = ['https://pele.myvnc.com',
                         'https://104.248.27.6',
                         'https://*.127.0.0.1',
-                        'https://*104.248.27.6']
+                        'https://*104.248.27.6',
+                        'https://pele.myvnc.com',]
 
 ROOT_URLCONF = 'pele.urls'
 
