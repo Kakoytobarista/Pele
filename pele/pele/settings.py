@@ -66,6 +66,11 @@ CORS_ORIGIN_WHITELIST = (
     'https://104.248.27.6',
 )
 
+CSRF_TRUSTED_ORIGINS = ['https://pele.myvnc.com',
+                        'https://104.248.27.6',
+                        'https://*.127.0.0.1',
+                        'https://*104.248.27.6']
+
 ROOT_URLCONF = 'pele.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
