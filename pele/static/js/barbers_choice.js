@@ -5,7 +5,6 @@ import {getAvailableAppointment} from "./handlers.js";
 
 async function addBarbersText() {
     window.barbers = requestGetBarbers().then(async (data) => {
-        console.log(data)
         return data
     })
     for (let i = 0; i < await window.barbers.then((data => {
@@ -29,6 +28,7 @@ async function wrapperCheckTimeOut() {
             prev = i;
             const aElementBarber = document.querySelector(".active")
             selectBarberField.textContent = `You chose ${aElementBarber.textContent}`
+	    dateField.removeAttribute('disabled');
             if (aElementBarber !== null && dateField.value !== ""){
                 getAvailableAppointment()
             }
