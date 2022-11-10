@@ -16,5 +16,5 @@ python3 manage.py collectstatic --noinput \
 && \
 python3 manage.py loaddata db_data.json \
 && \
-gunicorn pele.wsgi:application --bind pele.myvnc.com" \
+gunicorn pele.wsgi:application --bind 127.0.0.1:8000" \
 ]
