@@ -409,3 +409,14 @@ input[type="radio"]:checked::before {
    width:100%;
    height: 0;   /* Height of the footer */
 }
+
+
+/*!*ds*! Optimize for mobile*/
+
+input[type=date] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
