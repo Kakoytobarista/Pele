@@ -10,3 +10,7 @@
 
 # LOGGING
 /pele/logs
+
+# certbot
+
+/infra/data/certbot
