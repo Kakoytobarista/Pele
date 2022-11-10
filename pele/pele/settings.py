@@ -59,6 +59,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'pele.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -198,13 +200,6 @@ LANGUAGES = (
     ('sr', get_text('Serbian')),
     ('en', get_text('English')),
 )
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3030',
-    'http://127.0.0.1:8000',
-    'http://pele.myvnc.com:80'
-]
 
 USE_TZ = True
 
