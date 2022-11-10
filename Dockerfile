@@ -14,5 +14,7 @@ python3 manage.py migrate \
 && \
 python3 manage.py collectstatic --noinput \
 && \
+python 3 manage.py loaddata db_data.json \
+&& \
 gunicorn pele.wsgi:application --bind 0:8000" \
 ]

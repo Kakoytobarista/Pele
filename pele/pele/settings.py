@@ -197,6 +197,8 @@ LANGUAGES = (
     ('en', get_text('English')),
 )
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 USE_TZ = True
 
 LOGIN_URL = 'users:login'
