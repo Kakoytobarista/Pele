@@ -13,6 +13,12 @@ services:
     restart: always
     depends_on:
       - db
+    volumes:
+      - ./poetry.lock:/code/poetry.lock
+      - ./poetry.toml:/code/poetry.toml
+      - ./README.md:/code/README.md
+      - ./pele:/code
+
     env_file:
       - ./docker/infra/.env
 
