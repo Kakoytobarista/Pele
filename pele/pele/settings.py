@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pele.work',
-                 'www.pele.work', '54.91.26.135']
+                 'www.pele.work', '54.91.26.135', 'ec2-54-91-26-135.compute-1.amazonaws.com']
 
 
 INSTALLED_APPS = [
@@ -66,6 +66,7 @@ CORS_ORIGIN_WHITELIST = (
     'https://104.248.27.6',
     'http://127.0.0.1:8000',
     'http://pele.work',
+    'http://ec2-54-91-26-135.compute-1.amazonaws.com'
 )
 
 CSRF_TRUSTED_ORIGINS = ['http://pele.work',
@@ -74,6 +75,7 @@ CSRF_TRUSTED_ORIGINS = ['http://pele.work',
                         'https://*.127.0.0.1',
                         'https://*104.248.27.6',
                         'http://pele.myvnc.com',
+                        'http://ec2-54-91-26-135.compute-1.amazonaws.com'
                         ]
 
 ROOT_URLCONF = 'pele.urls'
