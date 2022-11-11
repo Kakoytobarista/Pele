@@ -10,7 +10,6 @@ services:
 
   web:
     build: ./
-    container_name: pele_web
     restart: always
     depends_on:
       - db
