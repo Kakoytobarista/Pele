@@ -11,6 +11,8 @@ services:
   web:
     build: ./
     restart: always
+    expose:
+      - 8000
     depends_on:
       - db
     env_file:
