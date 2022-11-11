@@ -23,7 +23,7 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', 'pele.work',
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pele.work',
                  'www.pele.work', '54.91.26.135']
 
 
