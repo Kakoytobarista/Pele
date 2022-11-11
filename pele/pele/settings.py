@@ -70,7 +70,6 @@ CORS_ORIGIN_WHITELIST = (
 
 CSRF_TRUSTED_ORIGINS = ['http://pele.work',
                         'http://54.91.26.135',
-                        'www.pele.work',
                         'https://104.248.27.6',
                         'https://*.127.0.0.1',
                         'https://*104.248.27.6',
