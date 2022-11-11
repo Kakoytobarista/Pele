@@ -9,9 +9,9 @@ services:
     image: nginx:alpine
     container_name: cert_nginx
     volumes:
-      - ./conf/cert:/var/www
-      - ./conf/cert/default.conf:/etc/nginx/conf.d/config.template:ro
-      - ./log/nginx:/var/log/nginx
+      - ./docker/infra/cert:/var/www
+      - ./docker/infra/cert/default.conf:/etc/nginx/conf.d/config.template:ro
+      - ./docker/logs/nginx:/var/log/nginx
     networks:
       - request
     ports:
