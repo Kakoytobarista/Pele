@@ -2,6 +2,8 @@ FROM python:3.8.5
 
 ENV PYTHONUNBUFFERED=1
 
+# ADD CODE TO VOLUME
+
 WORKDIR /code
 COPY poetry.lock pyproject.toml /code/
 COPY pele /code
