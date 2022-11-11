@@ -394,14 +394,6 @@ input[type="radio"]:checked::before {
 
 /*# Footer*/
 
-@media only screen and (max-width: 600px) {
-  #footer {
-    margin-top: 50px;
-    position: static!important;
-
-  }
-}
-
 
 #footer {
    position:absolute;
