@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     volumes:
-      - ./data/nginx:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/conf.d
       - static_value:/var/html/static/
       - media_value:/var/html/media/
     depends_on:
