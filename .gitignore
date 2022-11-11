@@ -13,5 +13,5 @@
 
 # certbot
 
-/infra/data/certbot
-/infra/docker
+/docker/infra/data/certbot
+/docker/infra/docker

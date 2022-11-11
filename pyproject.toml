@@ -28,4 +28,3 @@ django-cors-headers = "^3.13.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
