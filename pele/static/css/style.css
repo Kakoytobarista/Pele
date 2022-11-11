@@ -394,6 +394,18 @@ input[type="radio"]:checked::before {
 
 /*# Footer*/
 
+@media only screen and (max-width: 600px) {
+  #footer {
+    display: block!important;
+    clear: both!important;
+    margin-top: 15vh!important;
+    position: sticky!important;
+
+}
+
+}
+
+
 #footer {
    position:absolute;
    bottom:0;
