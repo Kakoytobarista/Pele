@@ -29,7 +29,6 @@ services:
       - ./pele/static:/var/html/static
     depends_on:
       - web
-      - db
 
 volumes:
   postgres_data:
