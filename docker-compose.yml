@@ -14,10 +14,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ./poetry.lock:/code/poetry.lock
-      - ./pyproject.toml:/code/pyproject.toml
-      - ./README.md:/code/README.md
       - ./pele:/code
+      - ./README.md:/code/README.md
 
     env_file:
       - ./docker/infra/.env
