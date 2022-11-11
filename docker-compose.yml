@@ -14,9 +14,6 @@ services:
     restart: always
     depends_on:
       - db
-    volumes:
-      - ./pele:/code
-
     env_file:
       - ./docker/infra/.env
 
