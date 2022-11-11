@@ -61,13 +61,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-    'https://localhost:8000',
-    'https://127.0.0.1:8000',
+    'http://localhost:8000',
     'http://127.0.0.1:8000',
-    'https://pele.work',
-    'https://54.91.26.135',
+    'http//127.0.0.1:8000',
+    'http://pele.work',
+    'http://54.91.26.135',
 ]
 
 
@@ -86,7 +86,7 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://pele.work',
+CSRF_TRUSTED_ORIGINS = ['http://pele.work',
                         'http://pele.work',
                         'http://54.91.26.135',
                         'http://104.248.27.6',
