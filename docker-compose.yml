@@ -18,7 +18,7 @@ services:
       - ./docker/infra/.env
 
   nginx:
-    image: nginx:1.19.3
+    image: nginx:1.19.8-alpine
     expose:
       - 80
       - 443
