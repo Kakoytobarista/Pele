@@ -61,16 +61,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
-# git
-# CSRF_TRUSTED_ORIGINS = ['http://pele.work',
-#                         'http://54.91.26.135',
-#                         'http://104.248.27.6',
-#                         'http://*.127.0.0.1',
-#                         'http://*104.248.27.6',
-#                         'http://ec2-54-91-26-135.compute-1.amazonaws.com'
-#                         ]
+# CORS_ORIGIN_ALLOW_ALL = True
+#
+# # git
+# # CSRF_TRUSTED_ORIGINS = ['http://pele.work',
+# #                         'http://54.91.26.135',
+# #                         'http://104.248.27.6',
+# #                         'http://*.127.0.0.1',
+# #                         'http://*104.248.27.6',
+# #                         'http://ec2-54-91-26-135.compute-1.amazonaws.com'
+# #                         ]
 
 ROOT_URLCONF = 'pele.urls'
 
