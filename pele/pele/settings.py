@@ -62,20 +62,18 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:8000',
-    'http://pele.myvnc.com',
     'https://104.248.27.6',
-    'http://127.0.0.1:8000',
-    'http://pele.work',
-    'http://ec2-54-91-26-135.compute-1.amazonaws.com'
+    'https://127.0.0.1:8000',
+    'https://pele.work',
+    'https://ec2-54-91-26-135.compute-1.amazonaws.com'
 )
 
-CSRF_TRUSTED_ORIGINS = ['http://pele.work',
-                        'http://54.91.26.135',
+CSRF_TRUSTED_ORIGINS = ['https://pele.work',
+                        'https://54.91.26.135',
                         'https://104.248.27.6',
                         'https://*.127.0.0.1',
                         'https://*104.248.27.6',
-                        'http://pele.myvnc.com',
-                        'http://ec2-54-91-26-135.compute-1.amazonaws.com'
+                        'https://ec2-54-91-26-135.compute-1.amazonaws.com'
                         ]
 
 ROOT_URLCONF = 'pele.urls'
