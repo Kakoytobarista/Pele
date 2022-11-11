@@ -15,7 +15,7 @@ services:
       - db
     volumes:
       - ./poetry.lock:/code/poetry.lock
-      - ./poetry.toml:/code/poetry.toml
+      - ./pyproject.toml:/code/pyproject.toml
       - ./README.md:/code/README.md
       - ./pele:/code
 
