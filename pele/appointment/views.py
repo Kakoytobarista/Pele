@@ -16,6 +16,10 @@ def index(request: Request):
     :return: Response
     """
     template = 'appointment/index.html'
+    try:
+        2 // 0
+    except:
+        raise Exception
     if request.method == "POST" or None:
         name, date, time, email = request.POST["name"], \
                                   request.POST["date"], \
