@@ -9,7 +9,7 @@ services:
       - ./docker/infra/.env
 
   web:
-    build: ../.
+    build: ./
     restart: always
     depends_on:
       - db
