@@ -32,7 +32,7 @@ jobs:
         run: |
           cd pele
           python manage.py test
-  
+
 
   linters:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
       - name: Python Linter
         uses: sunnysid3up/python-linter@master
         with:
-          source: "Pele"
+          source: "pele"
           mypy-options: "--ignore-missing-imports --show-error-codes"
           pylint-options: "--rcfile=setup.cfg"
           isort-options: "-w 100"
