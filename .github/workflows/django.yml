@@ -43,7 +43,6 @@ jobs:
         with:
           source: "./pele"
           mypy-options: "--ignore-missing-imports --show-error-codes"
-          pylint-options: "--rcfile=pele/setup.cfg"
+          pylint-options: "--rcfile=pele/setup.cfg  --ignore=^migrations"
           isort-options: "-w 100"
           django: true
-          exclude: ^migrations/
