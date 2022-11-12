@@ -30,6 +30,7 @@ jobs:
         poetry install --no-interaction
     - name: Run Tests
       run: |
+        cd pele
         python manage.py test
   
 
