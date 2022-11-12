@@ -24,6 +24,16 @@
     {% endblock %}
 </main>
 {% include 'includes/footer.html' %}
+{% if request.get_full_path == "/appointment_success/" %}
+<style>
+    footer {
+       position:absolute!important;
+       bottom:0!important;
+       width:100%!important;
+       height:60px!important;
+    }
+</style>
+{% endif %}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2-react-content@5.0.7/dist/sweetalert2-react-content.umd.min.js" integrity="sha256-LMyhn6a70T1qmngkIxThxnGkq/smNLO2TfR4ZZRJAdQ=" crossorigin="anonymous"></script>
     <script type="module" src="{% static  'js/localChanges.js' %}"></script>
