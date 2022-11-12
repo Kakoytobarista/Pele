@@ -1,7 +1,7 @@
 import {
     dateField,
     elementUlWithTextOfAppointments,
-    fieldDate,
+    fieldDate, localSelectElem,
     selectBody,
     selectItem, timeField
 } from "./constants.js";
@@ -17,26 +17,26 @@ export function addAlert(text) {
 export function addComplete() {
     let timerInterval
     Swal.fire({
-        title: '<strong>We make an appointment for you.</strong><br>',
-        html: '<br>I will close in <b></b> milliseconds.',
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-            console.log("IM here")
-            Swal.showLoading()
-            const b = Swal.getHtmlContainer().querySelector('b')
-            timerInterval = setInterval(() => {
-                b.textContent = Swal.getTimerLeft()
-            }, 300)
-        },
-        willClose: () => {
-            clearInterval(timerInterval)
-        }
+      title: '<strong>We make an appointment for you.</strong><br>',
+      html: '<br>I will close in <b></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 200)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
     }).then((result) => {
-        if (result.dismiss === Swal.DismissReason.timer) {
-            console.log('I was closed by the timer')
-        }
-    })
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+  }
+})
 }
 
 function setAttributes(el, attrs) {
@@ -61,7 +61,7 @@ export function addAttributeShowToElement(element) {
 }
 
 export function addAttributeHideToElement(element) {
-    element.style.display = "none";
+   element.style.display = "none";
 }
 
 function delAllValueFromAppointmentElems() {
@@ -95,29 +95,12 @@ async function createLabelAndInputElements(element, i) {
 }
 
 export async function getAvailableAppointment() {
-    const aElementBarber = document.querySelector(".active")
-    if (aElementBarber == null) {
-        addAlert("Fill barber field")
-    }
-    delAllValueFromAppointmentElems()
-    selectItem.textContent = ""
-    timeField.textContent = ""
-
-    let date = fieldDate.value
-    let barberId = Number(aElementBarber.getAttribute("id_barber"))
-    window.timeStart = getAvailableAppointments(date, barberId).then((data) => {
-        return data
-    })
-    for (let i = 0; i < await window.timeStart.then((data => {
-        return data.length
-    })); i++) {
         const aElementBarber = document.querySelector(".active")
-        if (aElementBarber == null) {
+        if (aElementBarber == null){
             addAlert("Fill barber field")
         }
         delAllValueFromAppointmentElems()
-        selectItem.textContent = ""
-        timeField.value = ""
+         selectItem.textContent = ""
 
         let date = fieldDate.value
         let barberId = Number(aElementBarber.getAttribute("id_barber"))
@@ -131,13 +114,10 @@ export async function getAvailableAppointment() {
             await createLabelAndInputElements(elementUlWithTextOfAppointments, i)
             radioCheck()
         }
-    }
 }
 
 export async function addEventChange(func, elem) {
     elem.addEventListener("change", async () => {
-            timeField.textContent = ""
-            func()
         console.log("Change")
         timeField.value = ""
         func()
@@ -145,12 +125,12 @@ export async function addEventChange(func, elem) {
     )
 }
 
-export function changeFunc() {
+export function changeFunc(){
     document.querySelector('form').submit();
 }
 
 
-export async function isClickToDateField() {
+export async function isClickToDateField () {
     dateField.addEventListener("click", async () => {
         const aElementBarber = document.querySelector(".active")
         if (aElementBarber == null) {
