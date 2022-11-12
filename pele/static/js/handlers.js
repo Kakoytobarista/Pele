@@ -100,6 +100,7 @@ export async function getAvailableAppointment() {
         }
         delAllValueFromAppointmentElems()
          selectItem.textContent = ""
+         timeField.value = ""
 
         let date = fieldDate.value
         let barberId = Number(aElementBarber.getAttribute("id_barber"))
