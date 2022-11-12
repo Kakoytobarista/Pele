@@ -34,7 +34,6 @@ export function addComplete() {
     }).then((result) => {
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('I was closed by the timer')
   }
 })
 }
@@ -118,7 +117,6 @@ export async function getAvailableAppointment() {
 
 export async function addEventChange(func, elem) {
     elem.addEventListener("change", async () => {
-        console.log("Change")
         timeField.value = ""
         func()
         }
