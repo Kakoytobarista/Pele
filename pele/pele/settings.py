@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-from corsheaders.defaults import default_headerxs
 from dotenv import load_dotenv
 
 import sentry_sdk
