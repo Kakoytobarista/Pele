@@ -46,3 +46,4 @@ jobs:
           pylint-options: "--rcfile=pele/setup.cfg"
           isort-options: "-w 100"
           django: true
+          exclude: ^migrations/
