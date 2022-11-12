@@ -22,6 +22,7 @@ export function addComplete() {
       timer: 2000,
       timerProgressBar: true,
       didOpen: () => {
+          console.log("IM here")
         Swal.showLoading()
         const b = Swal.getHtmlContainer().querySelector('b')
         timerInterval = setInterval(() => {
@@ -33,6 +34,7 @@ export function addComplete() {
       }
     }).then((result) => {
       if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
   }
 })
 }
