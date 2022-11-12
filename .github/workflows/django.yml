@@ -34,17 +34,12 @@ jobs:
           python manage.py test
   
 
-  build:
-    name: Lint Code Base
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Python Linter
-        uses: sunnysid3up/python-linter@master
+      - name: PEP8 Action
+        # You may pin to the exact commit or the version.
+        # uses: quentinguidee/pep8-action@9af6974c3aeedfe874f9745ed344c3274c5f0d71
+        uses: quentinguidee/pep8-action@v2.0.13-dev
         with:
-          source: "src"
-          mypy-options: "--ignore-missing-imports --show-error-codes"
-          pylint-options: "--rcfile=setup.cfg"
-          isort-options: "-w 100"
-          django: true
+          # Give arguments to the pycodestyle command.
+          arguments: # optional, default is
+          # The commenter bot token
+          token: # optional
