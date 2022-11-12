@@ -9,7 +9,6 @@ COPY poetry.lock pyproject.toml /code/
 COPY pele /code
 COPY README.md /code
 RUN pip install poetry
-RUN python -m pip install --upgrade pip
 RUN pip3 install psycopg2-binary
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-interaction
