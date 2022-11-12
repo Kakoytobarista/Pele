@@ -36,12 +36,13 @@ jobs:
 
   linters:
     runs-on: ubuntu-latest
+    needs: tests
     steps:
       - uses: actions/checkout@v2
       - name: Python Linter
         uses: sunnysid3up/python-linter@master
         with:
-          source: "src"
+          source: "pele"
           mypy-options: "--ignore-missing-imports --show-error-codes"
           pylint-options: "--rcfile=setup.cfg"
           isort-options: "-w 100"
