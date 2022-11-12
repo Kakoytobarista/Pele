@@ -32,15 +32,11 @@ jobs:
         run: |
           cd pele
           python manage.py test
-
+  
 
       - name: PEP8 Action
         # You may pin to the exact commit or the version.
         # uses: quentinguidee/pep8-action@9af6974c3aeedfe874f9745ed344c3274c5f0d71
-      - uses: actions/checkout@master
-        with:
-        ref: ${{ github.event.pull_request.head.sha }}
-      - name: 'Run PEP8'
         uses: quentinguidee/pep8-action@v1
         with:
           arguments: '--max-line-length=120'
