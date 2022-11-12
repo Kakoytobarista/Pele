@@ -3,7 +3,7 @@ import {
     elementUlWithTextOfAppointments,
     fieldDate, localSelectElem,
     selectBody,
-    selectItem
+    selectItem, timeField
 } from "./constants.js";
 import {getAvailableAppointments} from "./requests.js";
 
@@ -101,6 +101,7 @@ export async function getAvailableAppointment() {
         }
         delAllValueFromAppointmentElems()
          selectItem.textContent = ""
+         timeField.value = ""
 
         let date = fieldDate.value
         let barberId = Number(aElementBarber.getAttribute("id_barber"))
@@ -118,6 +119,8 @@ export async function getAvailableAppointment() {
 
 export async function addEventChange(func, elem) {
     elem.addEventListener("change", async () => {
+        console.log("Change")
+        timeField.value = ""
         func()
         }
     )
