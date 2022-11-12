@@ -95,7 +95,6 @@ async function createLabelAndInputElements(element, i) {
 }
 
 export async function getAvailableAppointment() {
-<<<<<<< HEAD
     const aElementBarber = document.querySelector(".active")
     if (aElementBarber == null) {
         addAlert("Fill barber field")
@@ -112,14 +111,13 @@ export async function getAvailableAppointment() {
     for (let i = 0; i < await window.timeStart.then((data => {
         return data.length
     })); i++) {
-=======
         const aElementBarber = document.querySelector(".active")
-        if (aElementBarber == null){
+        if (aElementBarber == null) {
             addAlert("Fill barber field")
         }
         delAllValueFromAppointmentElems()
-         selectItem.textContent = ""
-         timeField.value = ""
+        selectItem.textContent = ""
+        timeField.value = ""
 
         let date = fieldDate.value
         let barberId = Number(aElementBarber.getAttribute("id_barber"))
@@ -129,23 +127,20 @@ export async function getAvailableAppointment() {
         for (let i = 0; i < await window.timeStart.then((data => {
             return data.length
         })); i++) {
->>>>>>> f258da9 (Add cleaning field timField after changes date or barber)
 
-        await createLabelAndInputElements(elementUlWithTextOfAppointments, i)
-        radioCheck()
+            await createLabelAndInputElements(elementUlWithTextOfAppointments, i)
+            radioCheck()
+        }
     }
 }
 
 export async function addEventChange(func, elem) {
     elem.addEventListener("change", async () => {
-<<<<<<< HEAD
             timeField.textContent = ""
             func()
-=======
         console.log("Change")
         timeField.value = ""
         func()
->>>>>>> f258da9 (Add cleaning field timField after changes date or barber)
         }
     )
 }
