@@ -34,7 +34,7 @@ jobs:
           python manage.py test
   
 
-  linters:
+linters:
   steps:
     - uses: actions/checkout@v2
     - name: Python Linter
