@@ -43,6 +43,6 @@ jobs:
         with:
           source: "pele"
           mypy-options: "--ignore-missing-imports --show-error-codes"
-          pylint-options: "--rcfile=.pylintrc pele"
+          pylint-options: "--rcfile=.pylintrc ."
           isort-options: "-w 100"
           django: true
