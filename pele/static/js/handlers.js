@@ -1,7 +1,7 @@
 import {
     dateField,
     elementUlWithTextOfAppointments,
-    fieldDate, localSelectElem,
+    fieldDate,
     selectBody,
     selectItem, timeField
 } from "./constants.js";
