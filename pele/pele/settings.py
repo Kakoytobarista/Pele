@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+
+from corsheaders.defaults import default_headerxs
 from dotenv import load_dotenv
 
 import sentry_sdk
@@ -23,8 +25,8 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '54.91.26.135',
-                 'pele.work']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pele.work',
+                 'www.pele.work', '54.91.26.135', 'ec2-54-91-26-135.compute-1.amazonaws.com']
 
 
 INSTALLED_APPS = [
@@ -42,11 +44,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_crontab',
     'django_filters',
+    'corsheaders',
     'phonenumber_field',
     'django_extensions',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -56,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CSRF_TRUSTED_ORIGINS = ["https://pele.work", "https://www.pele.work"]
 
 ROOT_URLCONF = 'pele.urls'
 
