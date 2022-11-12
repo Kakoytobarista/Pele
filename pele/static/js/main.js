@@ -41,7 +41,6 @@ async function dropdown() {
 
 async function makeAppointment() {
     await btnSubmit.addEventListener("click", async () => {
-        console.log("Make appointment WE ARE HERE!")
         if (
                 nameField.value.length >= 1 &&
                 phoneField.value.length >= 1 &&
@@ -51,7 +50,6 @@ async function makeAppointment() {
 
                 let data = window.availableAppointments[window.activeAppointment]
                 let aElementBarber = document.querySelector(".active")
-                console.log(data)
                 await makeRequestToMakeAppointment(
                     nameField.value,
                     emailField.value,
