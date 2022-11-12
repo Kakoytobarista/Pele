@@ -9,5 +9,5 @@
 /.pyproject.toml
 
 # LOGGING
-/pele/logs
+/pele/logs/django.log
 log_del_appointments.txt
