@@ -43,15 +43,6 @@ section {
   border-radius: 30px;
 }
 
-
-/*.container {*/
-/*  padding: 20px 20px 20px 20px;*/
-/*  border: 1px solid lightgrey;*/
-/*  border-radius: 30px;*/
-/*   max-width:500px;*/
-/*  margin:auto;*/
-/*}*/
-
 .container1 {
   background-color: #f2f2f2;
   padding: 5px 20px 15px 20px;
@@ -113,7 +104,7 @@ input[type=date] {
   border-radius: 3px;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+
 @media (max-width: 400px) {
   .row {
     flex-direction: column;
@@ -176,13 +167,6 @@ main {
 #btn_main_page {
     margin: 5px;
 }
-
-#form_appointment {
-  /*min-width: 20%;*/
-  /*max-width: 70%;*/
-
-}
-/*header*/
 
 header {
   margin-bottom: 20px;
@@ -349,7 +333,6 @@ a[href='#'].active {
 
 
 input[type="radio"] {
-  /* ...existing styles */
   display: grid;
   place-content: center;
 }
@@ -361,9 +344,6 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
   transform: scale(1);
 }
-
-
-/*!**! Scroll bar*/
 
 
 ::-webkit-scrollbar {
@@ -404,7 +384,6 @@ input[type="radio"]:checked::before {
 }
 
 }
-
 
 footer {
   margin-top:calc(5% + 60px);

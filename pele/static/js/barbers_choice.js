@@ -1,13 +1,10 @@
 import {requestGetBarbers} from "./requests.js";
-import {barberList, barbersElements, dateField, selectBarberField} from "./constants.js"
+import {barberList, barbersElements, dateField, selectBarberField, timeField} from "./constants.js"
 import {getAvailableAppointment} from "./handlers.js";
 
 
 async function addBarbersText() {
     window.barbers = requestGetBarbers().then(async (data) => {
-        console.log(data)
-        console.log(data)
-        console.log(data)
         return data
     })
     for (let i = 0; i < await window.barbers.then((data => {
@@ -34,6 +31,7 @@ async function wrapperCheckTimeOut() {
             dateField.removeAttribute('disabled');
             if (aElementBarber !== null && dateField.value !== ""){
                 getAvailableAppointment()
+                timeField.value = ""
             }
         });
     }
