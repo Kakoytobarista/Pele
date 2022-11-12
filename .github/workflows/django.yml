@@ -35,8 +35,8 @@ jobs:
 
 
   linters:
-      runs-on: ubuntu-latest
-      - name: Python Pylin GitHub Action
-        uses: fylein/python-pylint-github-action@v1
-        with:
-          args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc pele
+    runs-on: ubuntu-latest
+    - name: Python Pylin GitHub Action
+      uses: fylein/python-pylint-github-action@v1
+      with:
+        args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc pele
