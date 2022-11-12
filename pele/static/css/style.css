@@ -395,7 +395,7 @@ input[type="radio"]:checked::before {
 /*# Footer*/
 
 @media only screen and (max-width: 600px) {
-  #footer {
+  footer {
     display: block!important;
     clear: both!important;
     margin-top: 15vh!important;
@@ -406,11 +406,8 @@ input[type="radio"]:checked::before {
 }
 
 
-#footer {
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height: 0;   /* Height of the footer */
+footer {
+  margin-top:calc(5% + 60px);
 }
 
 /*!*ds*! Optimize for mobile*/
