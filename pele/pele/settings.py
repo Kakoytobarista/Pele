@@ -23,8 +23,8 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '104.248.27.6',
-                 'pele.myvnc.com']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '54.91.26.135',
+                 'pele.work']
 
 
 INSTALLED_APPS = [
