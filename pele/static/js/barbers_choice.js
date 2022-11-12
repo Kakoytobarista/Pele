@@ -1,5 +1,5 @@
 import {requestGetBarbers} from "./requests.js";
-import {barberList, barbersElements, dateField, selectBarberField} from "./constants.js"
+import {barberList, barbersElements, dateField, selectBarberField, timeField} from "./constants.js"
 import {getAvailableAppointment} from "./handlers.js";
 
 
@@ -28,9 +28,10 @@ async function wrapperCheckTimeOut() {
             prev = i;
             const aElementBarber = document.querySelector(".active")
             selectBarberField.textContent = `You chose ${aElementBarber.textContent}`
-	    dateField.removeAttribute('disabled');
+            dateField.removeAttribute('disabled');
             if (aElementBarber !== null && dateField.value !== ""){
                 getAvailableAppointment()
+                timeField.value = ""
             }
         });
     }
