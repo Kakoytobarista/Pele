@@ -92,6 +92,7 @@ jobs:
                cd home/Pele
                sudo docker-compose down
                sudo docker image rm pele_web
+               sudo docker volume rm pele_static_value
                touch .env
                echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
                echo DB_NAME=${{ secrets.DB_NAME }} >> .env
