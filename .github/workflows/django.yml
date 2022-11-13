@@ -50,4 +50,4 @@ jobs:
         with:
           ignore: "F401"
           max-line-length: "120"
-          exclude: "~/migrations/"
+          exclude: "./pele/*/migrations/"
