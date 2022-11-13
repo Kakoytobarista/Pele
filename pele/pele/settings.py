@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-
 load_dotenv()
 
 sentry_sdk.init(
@@ -26,7 +25,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pele.work',
                  'www.pele.work', '54.91.26.135', 'ec2-54-91-26-135.compute-1.amazonaws.com']
-
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
@@ -60,7 +58,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 CSRF_TRUSTED_ORIGINS = ["https://pele.work", "https://www.pele.work"]
 
 ROOT_URLCONF = 'pele.urls'
@@ -85,23 +82,22 @@ TEMPLATES = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':
-    ['rest_framework.authentication.TokenAuthentication', ],
+        ['rest_framework.authentication.TokenAuthentication', ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PERMISSION_CLASSES':
-    ['rest_framework.permissions.IsAuthenticatedOrReadOnly', ],
+        ['rest_framework.permissions.IsAuthenticatedOrReadOnly', ],
 }
 
 CRONJOBS = [
-    ('10 8 * * *', 'core.cron.notification_job', '>> '
-     + os.path.join(BASE_DIR, 'logs/notif_appointment.log' + ' 2>&1 ')),
-    ('0 0 * * MON', 'core.cron.remove_unusable_appointment_job', '>> '
-     + os.path.join(BASE_DIR, 'logs/del_appointment.log' + ' 2>&1 ')),
-    ('0 0 * * MON', 'core.cron.clean_log_file_job', '>> '
-     + os.path.join(BASE_DIR, 'logs/clean_log_appointment.log' + ' 2>&1 ')),
+    ('10 8 * * *', 'core.cron.notification_job', '>> ' +
+     os.path.join(BASE_DIR, 'logs/notif_appointment.log' + ' 2>&1 ')),
+    ('0 0 * * MON', 'core.cron.remove_unusable_appointment_job', '>> ' +
+     os.path.join(BASE_DIR, 'logs/del_appointment.log' + ' 2>&1 ')),
+    ('0 0 * * MON', 'core.cron.clean_log_file_job', '>> ' +
+     os.path.join(BASE_DIR, 'logs/clean_log_appointment.log' + ' 2>&1 ')),
 ]
 
 WSGI_APPLICATION = 'pele.wsgi.application'
-
 
 if DEBUG:
     DATABASES = {
@@ -125,7 +121,6 @@ else:
             'PORT': os.getenv('DB_PORT', default='5432')
         }
     }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -219,7 +214,6 @@ EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static')
