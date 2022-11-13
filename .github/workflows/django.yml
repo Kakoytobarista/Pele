@@ -49,6 +49,6 @@ jobs:
         uses: py-actions/flake8@v2
         with:
           ignore: "F401"
-          exclude: "appointment/migrations users/migrations"
-          max-line-length: "120"
+          exclude: "pele/appointment/migrations/"
+          max-line-length: "100"
           plugins: "flake8-bugbear==22.1.11 flake8-black"
