@@ -79,17 +79,15 @@ jobs:
 
   Deploy:
     runs-on: ubuntu-latest
+    needs: build_and_push_to_docker_hub
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy in EC2
-
-        env:
-          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-          HOSTNAME: ${{ secrets.HOSTNAME  }}
-          USER_NAME: ${{ secrets.USER_NAME  }}
+      - name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
-               echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-               ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
                touch .env
                echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
                echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -107,3 +105,37 @@ jobs:
                sudo docker image rm pele_web
 
                sudo docker-compose up -d
+
+
+
+
+#  Deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Deploy in EC2
+#
+#        env:
+#          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+#          HOSTNAME: ${{ secrets.HOSTNAME  }}
+#          USER_NAME: ${{ secrets.USER_NAME  }}
+#        run: |
+#               echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
+#               ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+#               touch .env
+#               echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
+#               echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+#               echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+#               echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+#               echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+#               echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+#               echo SENTRY_KEY=${{ secrets.SENTRY_KEY }} >> .env
+#               echo DJANGO_KEY=${{ secrets.DJANGO_KEY }} >> .env
+#               echo EMAIL_HOST=${{ secrets.EMAIL_HOST }} >> .env
+#               echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
+#               echo EMAIL_PORT=${{ secrets.EMAIL_PORT }} >> .env
+#               ls -la
+#               sudo docker-compose down
+#               sudo docker image rm pele_web
+#
+#               sudo docker-compose up -d
