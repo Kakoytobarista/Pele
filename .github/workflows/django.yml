@@ -2,7 +2,7 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "test_branch" ]
   pull_request:
     branches: [ "main" ]
 
@@ -74,7 +74,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: heyaslan/pele:latest
+          tags: heyaslan/test_pele:latest
 
   Deploy:
     runs-on: ubuntu-latest
@@ -83,9 +83,9 @@ jobs:
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOSTNAME }}
-          username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          host: ${{ secrets.TEST_ENV_HOSTNAME }}
+          username: ${{ secrets.TEST_ENV_USERNAME }}
+          key: ${{ secrets.TEST_PRIVATE_KEY }}
           script: |
                ls -la
                cd home/Pele
