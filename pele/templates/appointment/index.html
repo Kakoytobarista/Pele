@@ -7,7 +7,6 @@
     <div>
         <div id="form_appointment" class="container col-sm-9 col-md-7 col-lg-6 col-xl-5 col-11">
             <form method="post" enctype="multipart/form-data"><br>
-                {% csrf_token %}
                 <p>DARIA</p>
                 <label for="name">{% trans 'First Name and Second name' %}</label>
                 <input type="text" id="name" name="name" value="{{ name }}" required>
