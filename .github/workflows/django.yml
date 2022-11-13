@@ -1,26 +1,26 @@
 name: Django CI
-'on':
+
+on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
+
 jobs:
   tests:
+
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
-        python-version:
-          - 3.8
-          - 3.9
+        python-version: [ 3.8, 3.9 ]
+
     steps:
       - uses: actions/checkout@v3
-      - name: 'Set up Python ${{ matrix.python-version }}'
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
-          python-version: '${{ matrix.python-version }}'
+          python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
@@ -32,6 +32,9 @@ jobs:
         run: |
           cd pele
           python manage.py test
+
+
+
   flake8-lint:
     runs-on: ubuntu-latest
     needs: tests
@@ -42,52 +45,61 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          ignore: E126
-          max-line-length: '120'
-          exclude: ./pele/*/migrations/
+          ignore: "E126"
+          max-line-length: "120"
+          exclude: "./pele/*/migrations/"
+
+
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: flake8-lint
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+
       - name: Login to Docker
         uses: docker/login-action@v1
         with:
-          username: '${{ secrets.DOCKER_USERNAME }}'
-          password: '${{ secrets.DOCKER_PASSWORD }}'
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: 'heyaslan/pele:latest'
+          tags: heyaslan/pele:latest
+
   Deploy:
-    needs: build_and_push_to_docker_hub
+        needs: build_and_push_to_docker_hub
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy in EC2
         uses: actions/checkout@v2
+
         env:
-          PRIVATE_KEY: '${{ secrets.AWS_PRIVATE_KEY  }}'
-          HOSTNAME: '${{ secrets.HOSTNAME  }}'
-          USER_NAME: '${{ secrets.USER_NAME  }}'
-        run: >
-          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-
-          ssh -o StrictHostKeyChecking=no -i private_key
-          ${USER_NAME}@${HOSTNAME}
-
-          script: |
-
-          sudo docker-compose down
-
-          sudo docker image rm pele_web
-
-          sudo docker-compose up -d
+          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+          HOSTNAME: ${{ secrets.HOSTNAME  }}
+          USER_NAME: ${{ secrets.USER_NAME  }}
+        run: |
+               echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
+               ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+               script: |
+               sudo docker-compose down
+               sudo docker image rm pele_web
+               sudo docker-compose up -d
+          #            touch .env
+          #            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
+          #            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+          #            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+          #            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+          #            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+          #            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
