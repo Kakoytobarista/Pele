@@ -90,16 +90,15 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
-#          script: |
-#            cd foodgram-project-react/infra
-#            sudo docker-compose stop
-#            sudo docker-compose rm -f infra_web_1
-#            sudo docker image rm heyaslan/foodgram:v1.1.3
-#            touch .env
-#            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
-#            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-#            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-#            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-#            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-#            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-#            sudo docker-compose up -d
+          script: |
+            sudo docker-compose stop
+            sudo docker-compose rm -f infra_web_1
+            sudo docker image rm heyaslan/foodgram:v1.1.3
+            touch .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
+            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            sudo docker-compose up -d
