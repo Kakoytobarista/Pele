@@ -85,20 +85,20 @@ jobs:
       - name: Deploy in EC2
 
         env:
-            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-            HOSTNAME : ${{ secrets.HOSTNAME  }}
-            USER_NAME : ${{ secrets.USER_NAME  }}
+          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+          HOSTNAME: ${{ secrets.HOSTNAME  }}
+          USER_NAME: ${{ secrets.USER_NAME  }}
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
-          script: |
-            sudo docker-compose down
-            sudo docker image rm pele_web
-#            touch .env
-#            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
-#            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-#            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-#            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-#            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-#            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            sudo docker-compose up -d
+               echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
+               ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+               script: |
+               sudo docker-compose down
+               sudo docker image rm pele_web
+          #            touch .env
+          #            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
+          #            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+          #            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+          #            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+          #            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+          #            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+               sudo docker-compose up -d
