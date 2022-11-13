@@ -91,10 +91,12 @@ jobs:
         run: |
                echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
                ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
-               cd home/Pele
+               cd ~/Pele
                sudo docker-compose down
                sudo docker image rm pele_web
                touch .env
+               ls
+               pwd
                echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
                echo DB_NAME=${{ secrets.DB_NAME }} >> .env
                echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
