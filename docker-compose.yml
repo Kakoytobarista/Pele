@@ -23,7 +23,7 @@ services:
     expose:
       - 80
       - 443
-      - 8081 # порты для сервисов с ssr
+      - 8081
       - 8082
       - 8083
     ports:
@@ -34,7 +34,7 @@ services:
       - ./docker/infra/nginx.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt/:/etc/letsencrypt
       - ./pele/static:/var/html/static
-    command: /bin/sh -c "nginx -g 'daemon off;'"
+#    command: /bin/sh -c "nginx -g 'daemon off;'"
     depends_on:
       - web
 
