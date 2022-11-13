@@ -12,7 +12,7 @@ RUN python -m pip install --upgrade pip
 RUN pip install poetry
 RUN pip3 install psycopg2-binary
 RUN poetry config virtualenvs.create false
-RUN poetry install --no-interaction
+RUN poetry install
 CMD [ "sh", "-c", \
 "python3 manage.py crontab add \
 && \
