@@ -92,17 +92,17 @@ jobs:
                sudo docker-compose down
                sudo docker image rm pele_web
                touch .env
-#               echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
-#               echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-#               echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-#               echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-#               echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-#               echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-#               echo SENTRY_KEY=${{ secrets.SENTRY_KEY }} >> .env
-#               echo DJANGO_KEY=${{ secrets.DJANGO_KEY }} >> .env
-#               echo EMAIL_HOST=${{ secrets.EMAIL_HOST }} >> .env
-#               echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
-#               echo EMAIL_PORT=${{ secrets.EMAIL_PORT }} >> .env
+               echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
+               echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+               echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+               echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+               echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+               echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+               echo SENTRY_KEY=${{ secrets.SENTRY_KEY }} >> .env
+               echo DJANGO_KEY=${{ secrets.DJANGO_KEY }} >> .env
+               echo EMAIL_HOST=${{ secrets.EMAIL_HOST }} >> .env
+               echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
+               echo EMAIL_PORT=${{ secrets.EMAIL_PORT }} >> .env
                sudo docker-compose up -d
 
 
