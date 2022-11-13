@@ -89,12 +89,12 @@ REST_FRAMEWORK = {
 }
 
 CRONJOBS = [
-    ('10 8 * * *', 'core.cron.notification_job', '>> ' +
-     os.path.join(BASE_DIR, 'logs/notif_appointment.log' + ' 2>&1 ')),
-    ('0 0 * * MON', 'core.cron.remove_unusable_appointment_job', '>> ' +
-     os.path.join(BASE_DIR, 'logs/del_appointment.log' + ' 2>&1 ')),
-    ('0 0 * * MON', 'core.cron.clean_log_file_job', '>> ' +
-     os.path.join(BASE_DIR, 'logs/clean_log_appointment.log' + ' 2>&1 ')),
+    ('10 8 * * *', 'core.cron.notification_job', '>> ' + os.path.join(BASE_DIR,
+     'logs/notif_appointment.log' + ' 2>&1 ')),
+    ('0 0 * * MON', 'core.cron.remove_unusable_appointment_job', '>> ' + os.path.join(BASE_DIR,
+     'logs/del_appointment.log' + ' 2>&1 ')),
+    ('0 0 * * MON', 'core.cron.clean_log_file_job', '>> ' + os.path.join(BASE_DIR,
+     'logs/clean_log_appointment.log' + ' 2>&1 ')),
 ]
 
 WSGI_APPLICATION = 'pele.wsgi.application'
