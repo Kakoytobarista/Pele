@@ -131,7 +131,6 @@ python-versions = "*"
 
 [package.dependencies]
 Django = ">=3.2"
-typing-extensions = "*"
 
 [[package]]
 name = "django-phonenumber-field"
