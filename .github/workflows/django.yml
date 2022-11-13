@@ -2,7 +2,7 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" , "test_branch" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -32,7 +32,6 @@ jobs:
         run: |
           cd pele
           python manage.py test
-
 
 
   flake8-lint:
