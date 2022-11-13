@@ -50,4 +50,4 @@ jobs:
         with:
           ignore: "F401"
           max-line-length: "120"
-          exclude: "./pele/users/migrations/"
+          exclude: "./pele/users/migrations/ ./pele/appointment/"
