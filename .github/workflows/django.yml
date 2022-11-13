@@ -34,9 +34,15 @@ jobs:
           python manage.py test
 
 
-  linters:
+  flake8-lint:
     runs-on: ubuntu-latest
-    - name: Python Pylin GitHub Action
-      uses: fylein/python-pylint-github-action@v1
-      with:
-        args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc pele
+    name: Lint
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
