@@ -76,18 +76,21 @@ jobs:
           push: true
           tags: heyaslan/pele:latest
 
-#  deploy:
-#    runs-on: ubuntu-latest
-#    needs: build_and_push_to_docker_hub
-#
-#    steps:
-#
-#      - name: executing remote ssh commands to deploy
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.USER }}
-#          key: ${{ secrets.SSH_KEY }}
+  Deploy:
+#    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy in EC2
+        env:
+            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            HOSTNAME : ${{ secrets.HOSTNAME  }}
+            USER_NAME : ${{ secrets.USER_NAME  }}
+
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
 #          script: |
 #            cd foodgram-project-react/infra
 #            sudo docker-compose stop
