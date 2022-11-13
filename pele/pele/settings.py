@@ -23,8 +23,8 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pele.work',
-                 'www.pele.work', '54.91.26.135', 'ec2-54-91-26-135.compute-1.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '161.35.79.140',
+                 'pele.lol', 'www.pele.lol']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://pele.work", "https://www.pele.work"]
+CSRF_TRUSTED_ORIGINS = ["https://pele.lol", "https://www.pele.lol"]
 
 ROOT_URLCONF = 'pele.urls'
 
