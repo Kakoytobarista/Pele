@@ -88,7 +88,7 @@ jobs:
           PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
           HOSTNAME: ${{ secrets.HOSTNAME  }}
           USER_NAME: ${{ secrets.USER_NAME  }}
-        script: |
+        run: |
                echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
                ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
                ls -la
@@ -96,6 +96,8 @@ jobs:
                sudo docker-compose down
                sudo docker image rm pele_web
                touch .env
+               ls
+               ls
                ls
                echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
                echo DB_NAME=${{ secrets.DB_NAME }} >> .env
