@@ -93,7 +93,6 @@ jobs:
                ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
                ls
                pwd
-               cd /home/ubuntu/home/Pele
                sudo docker-compose down
                sudo docker image rm pele_web
                touch .env
