@@ -91,7 +91,7 @@ jobs:
                echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
                ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
                touch .env
-               ls
+               ls -la
                pwd
                echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
                echo DB_NAME=${{ secrets.DB_NAME }} >> .env
