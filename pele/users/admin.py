@@ -24,4 +24,3 @@ class UserAdmin(TranslationAdmin):
         'work_experience',
         'is_active',
     )
-

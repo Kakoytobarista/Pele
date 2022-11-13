@@ -48,6 +48,6 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          ignore: "F401"
+          ignore: "F401, E722, E126"
           max-line-length: "120"
           exclude: "./pele/*/migrations/"

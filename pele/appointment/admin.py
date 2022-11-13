@@ -47,4 +47,3 @@ class AppointmentAdmin(TranslationAdmin):
     list_display_links = (
         'date',
     )
-
