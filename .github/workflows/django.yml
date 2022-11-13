@@ -88,6 +88,7 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
                ls -la
+               cd home/Pele
                sudo docker-compose down
                sudo docker image rm pele_web
                touch .env
