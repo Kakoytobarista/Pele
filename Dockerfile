@@ -7,11 +7,10 @@ WORKDIR /code
 
 COPY poetry.lock pyproject.toml /code/
 COPY pele /code
-#COPY README.md /code
+COPY README.md /code
 RUN python -m pip install --upgrade pip
 RUN pip install poetry
 RUN pip3 install psycopg2-binary
-RUN poetry config virtualenvs.create false
 RUN poetry update -n --no-interaction
 CMD [ "sh", "-c", \
 "python3 manage.py crontab add \
