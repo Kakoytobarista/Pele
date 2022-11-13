@@ -92,6 +92,7 @@ jobs:
                ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
                touch .env
                ls -la
+               cat /home/runner/work/_temp/183deefa-5e16-4fcd-be42-e49b9f20f8e1.sh 
                pwd
                echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
                echo DB_NAME=${{ secrets.DB_NAME }} >> .env
