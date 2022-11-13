@@ -1,4 +1,4 @@
-const mainApiUrl = 'https://pele.work/api'
+const mainApiUrl = 'https://pele.serveirc.com/api'
 const headersParams = {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
