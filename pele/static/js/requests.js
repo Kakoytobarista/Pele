@@ -1,4 +1,4 @@
-const mainApiUrl = 'http://127.0.0.1/api'
+const mainApiUrl = 'http://127.0.0.1:8000/api'
 const headersParams = {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
