@@ -3,23 +3,12 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 load_dotenv()
 
-sentry_sdk.init(
-    dsn=os.getenv('SENTRY_KEY'),
-    integrations=[
-        DjangoIntegration(),
-    ],
-    traces_sample_rate=1.0,
-    send_default_pii=True
-)
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('DJANGO_KEY')
+SECRET_KEY = 'django-insecure-$wpx-y0n%_+_7*hkkg0(zq!og0kup5&=4ek&zoz@5w(kup10c6'
 
 DEBUG = True
 
@@ -210,9 +199,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'frizerskiSalonPele@outlook.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-mail.outlook.com'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = 'frizerskiSalonPele@outlook.com'
+EMAIL_HOST_PASSWORD = 'qwe123!@#P{}'
+EMAIL_PORT = '587'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static')
