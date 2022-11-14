@@ -1,16 +1,49 @@
-# Pele
-![example workflow](https://github.com/Kakoytobarista/Pele/actions/workflows/django.yml/badge.svg)
-Web application for making an appointment at the PELE barbershop.
+# Pele ![example workflow](https://github.com/Kakoytobarista/Pele/actions/workflows/django.yml/badge.svg)
 
-Technologies stack:
-bla bla
+>Web application for making an appointment at the PELE barbershop.
+_______
+### Technologies stack:
+* python
+* django
+* django rest framework
+* java script/html/css
+* AWS
+* cron
+* bootstrap
+* nginx
+* certbot
+* postgresSql
+* docker
+* docker-compose
+* sentry
 
-Miro prototype:
+
+### Miro prototype:
 https://miro.com/app/board/uXjVPLSL8fk=/
 
 ### How to deploy project:
 
-1. Run docker compose:
-```docker-compose up -d```
-3. Go to app container: ```docker exec -it {id of pele app} bash```
-4. Upload data to data base: ```python manage loaddata dumb_data.json```
+1. Clone project:
+```
+git clone https://github.com/Kakoytobarista/Pele.git
+```
+2. Go to development branch:
+```
+git checkout development_branch
+```
+3. Go to directory with 'manage.py':
+```
+cd pele
+```
+4. Upload data: 
+```
+python3 manage.py uploader_appointments {current date}{Y-M-D} {until date}{Y-M-D}
+```
+5. Activate crons: 
+```
+python3 manage.py crontab add
+```
+6. Run server:
+```
+python3 manage.py runserver
+```
