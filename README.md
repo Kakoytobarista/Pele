@@ -1,7 +1,7 @@
 # Pele ![example workflow](https://github.com/Kakoytobarista/Pele/actions/workflows/django.yml/badge.svg)
 
 >Web application for making an appointment at the PELE barbershop.
-Link on host: https://pele.serveirc.com/
+<br>Link on host: https://pele.serveirc.com/
 _______
 ### Technologies stack:
 * python
