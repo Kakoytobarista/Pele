@@ -16,7 +16,7 @@ export const btnSubmit = document.querySelector("#btn_submit");
 
 
 export const barbersElements = document.querySelectorAll(".barbers");
-export const barberList = document.querySelectorAll("a[href='#']");
+export const barberList = document.querySelectorAll("a[type='radio']");
 export const selectBarberField = document.querySelector("#dropdownMenuButton1")
 
 
