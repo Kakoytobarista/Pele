@@ -19,9 +19,9 @@ def convert_to_day_month_year(date: datetime):
     return reformat
 
 
-def send_mail_custom(name: str, date: datetime,
-                     time: datetime, email: str,
-                     mail_subject: str = 'You have successfully booked an appointment to haircut!'):
+def send_mail_custom(name: str, date: datetime, time: datetime, email: str,
+                     mail_subject: str = 'You have successfully booked an appointment to haircut!',
+                     template=get_template('email_letter.html')):
     """
     Function for send email for confirmation email address.
     """
@@ -32,7 +32,7 @@ def send_mail_custom(name: str, date: datetime,
     }
     send_mail(mail_subject, name, settings.EMAIL_HOST_USER,
               [email], fail_silently=True,
-              html_message=get_template('email_letter.html').render(context))
+              html_message=template.render(context))
 
 
 def time_in_range(array_with_intervals: list, current_start: datetime.time,

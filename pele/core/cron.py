@@ -3,6 +3,7 @@ from datetime import datetime
 import logging
 
 from django.db.models import Q
+from django.template.loader import get_template
 
 from appointment.models import Appointment
 from appointment.utils import send_mail_custom
@@ -28,7 +29,8 @@ def notification_job():
                              date=appointment.date,
                              time=appointment.time_begin,
                              email=appointment.email,
-                             mail_subject='Notification about today visit')
+                             mail_subject='Notification about today visit',
+                             template=get_template('email_letter_confirm.html'))
 
 
 def remove_unusable_appointment_job():
