@@ -400,6 +400,7 @@ input[type="radio"]:checked::before {
     clear: both!important;
     margin-top: 15vh!important;
     position: sticky!important;
+    bottom: auto!important;
 
 }
 
@@ -408,7 +409,7 @@ input[type="radio"]:checked::before {
 
 footer {
   margin-top:calc(5% + 60px);
-  bottom: 0;
+  /*bottom: 0;*/
 }
 
 /*!*ds*! Optimize for mobile*/
