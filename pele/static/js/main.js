@@ -47,7 +47,7 @@ async function makeAppointment() {
                 timeField.value.length >= 1 &&
                 dateField.value.length >= 1
             ) {
-
+                addComplete()
                 let data = window.availableAppointments[window.activeAppointment]
                 let aElementBarber = document.querySelector(".active")
                 await makeRequestToMakeAppointment(
@@ -61,7 +61,6 @@ async function makeAppointment() {
                     data["id"],
                     Number(aElementBarber.getAttribute("id_barber"))
                     )
-                addComplete()
 
                 delValueFromAppointment(window.activeAppointment)
             }
