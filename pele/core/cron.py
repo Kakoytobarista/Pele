@@ -39,10 +39,8 @@ def remove_unusable_appointment_job():
     that don't used before current time
     """
     current_date = datetime.now().date()
-    appointments = Appointment.objects.filter(name="",
-                                              is_available=True,
-                                              date__lt=current_date)
-    if len(appointments) > 1:
+    appointments = Appointment.objects.filter(name="", is_available=True, date__lt=current_date)
+    if len(appointments) >= 1:
         for appointment in appointments:
             logger.debug(appointment)
             appointment.delete()
