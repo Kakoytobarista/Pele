@@ -21,8 +21,8 @@ python3 manage.py collectstatic --noinput \
 && \
 python3 manage.py crontab add \
 && \
-gunicorn pele.wsgi:application --bind 0:8000 \
+service cron restart & service cron start \
 && \
-service cron restart & service cron start" \
+gunicorn pele.wsgi:application --bind 0:8000" \
 ]
 
