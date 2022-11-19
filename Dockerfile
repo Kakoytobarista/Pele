@@ -18,6 +18,8 @@ CMD [ "sh", "-c", \
 && \
 python3 manage.py migrate \
 && \
+python3 manage.py python manage.py uploader_appointments 2022-11-21 2022-11-28 \
+&& \
 python3 manage.py collectstatic --noinput \
 && \
 gunicorn pele.wsgi:application --bind 0:8000" \
