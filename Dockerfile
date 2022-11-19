@@ -8,7 +8,7 @@ WORKDIR /code
 COPY poetry.lock pyproject.toml /code/
 COPY pele /code
 COPY README.md /code
-RUN apt-get install -y cron
+RUN sudo apt install -y cron
 RUN python -m pip install --upgrade pip
 RUN pip install poetry
 RUN pip3 install psycopg2-binary
