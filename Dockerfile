@@ -25,4 +25,5 @@ gunicorn pele.wsgi:application --bind 0:8000 \
 && \
 service cron start" \
 ]
+CMD ["sh", "-c", "service cron restart & service cron start"]
 
