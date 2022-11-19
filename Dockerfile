@@ -25,4 +25,3 @@ service cron start \
 && \
 gunicorn pele.wsgi:application --bind 0:8000" \
 ]
-
