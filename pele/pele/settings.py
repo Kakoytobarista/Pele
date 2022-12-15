@@ -23,7 +23,7 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '161.35.79.140',
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '139.59.212.182',
                  'pele.serveirc.com', 'www.pele.serveirc.com']
 
 INSTALLED_APPS = [
