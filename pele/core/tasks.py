@@ -1,19 +1,19 @@
-import os.path
 from datetime import datetime
+
+from celery import shared_task
 import logging
 
-from django.db.models import Q
-
-from appointment.models import Appointment
 from appointment.utils import send_mail_custom
+from appointment.models import Appointment
 from pele.settings import BASE_DIR
 
 logger = logging.getLogger(__name__)
 
 
-def notification_job():
+@shared_task
+def notify_appointment():
     """
-    Cron job for notify client
+    task job for notify client
     about appointment today
     :return: None
     """
@@ -32,6 +32,7 @@ def notification_job():
                              mail_subject='Notification about today visit')
 
 
+@shared_task
 def remove_unusable_appointment_job():
     """
     Cron for delete unusable appointment
@@ -47,6 +48,7 @@ def remove_unusable_appointment_job():
             appointment.delete()
 
 
+@shared_task
 def clean_log_file_job():
     """
     Cron job for cleaning log file 'django.log'

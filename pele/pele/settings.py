@@ -28,11 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_crontab',
     'django_filters',
     'corsheaders',
     'phonenumber_field',
     'django_extensions',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -95,10 +96,6 @@ if DEBUG:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    STATICFILES_DIRS = [
-        BASE_DIR / "static",
-
-    ]
 else:
     DATABASES = {
         'default': {
@@ -203,11 +200,32 @@ EMAIL_HOST_USER = 'frizerskiSalonPele@outlook.com'
 EMAIL_HOST_PASSWORD = 'qwe123!@#P{}'
 EMAIL_PORT = '587'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    BASE_DIR / "staticfiles",
+
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+# CELERY
+
+CELERY_BROKER_URL = 'redis://0.0.0.0:16379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://0.0.0.0:16379/1',
+    }
+}
+
+CELERY_CACHE_BACKEND = 'default'
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
