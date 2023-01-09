@@ -118,7 +118,6 @@ export async function getAvailableAppointment() {
 
 export async function addEventChange(func, elem) {
     elem.addEventListener("change", async () => {
-        timeField.value = ""
         func()
         }
     )
