@@ -41,8 +41,10 @@ services:
   redis:
     image: redis:alpine
     command: redis-server
+    ports:
+      - 16379:16379
     expose:
-      - 6379
+      - 16379
 
 volumes:
   postgres_data:
