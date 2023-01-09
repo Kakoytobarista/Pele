@@ -205,7 +205,6 @@ LANGUAGES = (
 
 USE_TZ = True
 
-LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'appointment:index'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
