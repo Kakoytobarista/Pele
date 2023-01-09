@@ -44,6 +44,15 @@ services:
     expose:
       - 16379
 
+  celery-worker:
+    build: ./
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    command: celery -A pele worker --beat -l INFO
+    depends_on:
+      - redis
+
 volumes:
   postgres_data:
   static_value:
