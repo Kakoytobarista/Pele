@@ -9,8 +9,9 @@ COPY poetry.lock pyproject.toml /code/
 COPY pele /code
 COPY README.md /code
 COPY requirements.txt /code
+RUN pip install poetry
+RUN poetry install
 RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
 RUN pip3 install psycopg2-binary
 CMD [ "sh", "-c", \
 "python3 manage.py crontab add \

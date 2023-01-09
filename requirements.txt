@@ -70,3 +70,4 @@ virtualenv==20.16.6
 webencodings==0.5.1
 xattr==0.9.9
 zipp==3.10.0
+celery==5.2.7
