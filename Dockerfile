@@ -10,13 +10,12 @@ COPY pele /code
 COPY README.md /code
 COPY requirements.txt /code
 RUN pip install poetry
+RUN pip install --upgrade poetry
 RUN poetry install
 RUN python -m pip install --upgrade pip
 RUN pip3 install psycopg2-binary
 CMD [ "sh", "-c", \
-"python3 manage.py crontab add \
-&& \
-python3 manage.py migrate \
+"python3 manage.py migrate \
 && \
 python3 manage.py collectstatic --noinput \
 && \
