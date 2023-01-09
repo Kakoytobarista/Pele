@@ -37,7 +37,6 @@ mbstrdecoder==1.1.1
 more-itertools==9.0.0
 msgpack==1.0.4
 packaging==21.3
--e git+https://github.com/Kakoytobarista/Pele.git@3ca8ffb70ed8efef42c63af2d1cfc6e272cf6860#egg=pele
 pexpect==4.8.0
 phonenumberslite==8.13.0
 pkginfo==1.8.3

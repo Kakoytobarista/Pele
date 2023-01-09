@@ -2,12 +2,12 @@ import {makeRequestToMakeAppointment} from "./requests.js";
 import {
     fieldDate, selectItem, selectBody, dateField,
     nameField, emailField,
-    phoneField, timeField, commentField, btnSubmit
+    phoneField, timeField, commentField, btnSubmit, localSelectElem
 } from "./constants.js"
 
 import {
     addAlert, addAttributeHideToElement,
-    addAttributeShowToElement, addComplete, addEventChange,
+    addAttributeShowToElement, addComplete, addEventChange, changeFunc,
     getAvailableAppointment,
     isClickToDateField
 } from "./handlers.js"
@@ -73,6 +73,7 @@ async function makeAppointment() {
 await dropdown()
 await makeAppointment()
 await addEventChange(getAvailableAppointment, dateField)
+await addEventChange(changeFunc, localSelectElem)
 await isClickToDateField()
 
 
