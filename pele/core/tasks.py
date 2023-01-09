@@ -58,3 +58,11 @@ def clean_log_file_job():
     path_to_logs = str(BASE_DIR) + '/logs/django.log'
     logger.debug('Delete log file')
     os.remove(path_to_logs)
+
+
+def test_task():
+    send_mail_custom(name="hey",
+                     date=datetime.now(),
+                     time=datetime.now(),
+                     email="HeyDevAslan@gmail.com",
+                     mail_subject='Notification about today visit')
