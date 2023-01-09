@@ -60,6 +60,7 @@ def clean_log_file_job():
     os.remove(path_to_logs)
 
 
+@shared_task
 def test_task():
     send_mail_custom(name="hey",
                      date=datetime.now(),
