@@ -38,6 +38,12 @@ services:
     depends_on:
       - web
 
+  redis:
+    image: redis:alpine
+    command: redis-server
+    expose:
+      - 6379
+
 volumes:
   postgres_data:
   static_value:
