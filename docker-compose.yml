@@ -42,7 +42,7 @@ services:
     image: redis:alpine
     command: redis-server
     expose:
-      - 16379
+      - 6379
 
   celery-worker:
     build: ./
