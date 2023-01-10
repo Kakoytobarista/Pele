@@ -66,6 +66,7 @@ def clean_log_file_job():
 def test_task():
     appointments = Appointment.objects.all()
     logger.info("ALOHA")
+    logger.error("ALOHHA ERROR")
     for appointment in appointments:
         logger.info(f"Date: {appointment.date}, time: {appointment.time_begin}")
         send_mail_custom(name="ALOHA",
@@ -73,3 +74,4 @@ def test_task():
                          time=appointment.time_begin,
                          email="HeyAslan@yandex.ru",
                          mail_subject='Notification about today visit')
+    return ["hello, Aslan"]
