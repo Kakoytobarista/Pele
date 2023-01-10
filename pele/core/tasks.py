@@ -71,5 +71,5 @@ def test_task():
         send_mail_custom(name="ALOHA",
                          date=appointment.date,
                          time=appointment.time_begin,
-                         email="HeyDevAslan@gmail.com",
+                         email="HeyAslan@yandex.ru",
                          mail_subject='Notification about today visit')

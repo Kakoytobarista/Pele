@@ -6,7 +6,6 @@ from django.core.mail import send_mail
 from django.template.loader import get_template
 from pele import settings
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -36,8 +35,8 @@ def send_mail_custom(name: str, date: datetime,
     }
     logger.info(f"Send message to {email} with name: {name}")
     result = send_mail(mail_subject, name, settings.EMAIL_HOST_USER,
-              [email], fail_silently=True,
-              html_message=get_template('email_letter.html').render(context))
+                       [email],
+                       html_message=get_template('email_letter.html').render(context))
     logger.info(result)
 
 
