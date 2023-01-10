@@ -226,7 +226,7 @@ AUTH_USER_MODEL = 'users.User'
 
 # CELERY
 CELERY_BROKER_URL = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
 
 CACHES = {
     'default': {
