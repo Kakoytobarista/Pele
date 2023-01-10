@@ -4,6 +4,8 @@ from datetime import datetime
 from celery import shared_task
 import logging
 
+from django.db.models import Q
+
 from appointment.utils import send_mail_custom
 from appointment.models import Appointment
 from pele.settings import BASE_DIR
