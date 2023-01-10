@@ -65,7 +65,16 @@ def clean_log_file_job():
 @shared_task
 def test_task():
     appointments = Appointment.objects.all()
+    print('HELLO')
+    print('HELLO')
+    print('HELLO')
+    print('HELLO')
+    print('HELLO')
+    print('HELLO')
+    print('HELLO')
+    logger.info("ALOHA")
     for appointment in appointments:
+        logger.info("ALOHA INSIDE")
         send_mail_custom(name=appointment.name,
                          date=appointment.date,
                          time=appointment.time_begin,
