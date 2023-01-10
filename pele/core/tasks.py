@@ -74,6 +74,5 @@ def test_task():
                          time=appointment.time_begin,
                          email="HeyDevAslan@gmail.com",
                          mail_subject='Notification about today visit')
-        break
     result = ["HELLO"]
     return result
