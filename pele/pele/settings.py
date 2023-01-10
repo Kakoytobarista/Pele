@@ -10,10 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-$wpx-y0n%_+_7*hkkg0(zq!og0kup5&=4ek&zoz@5w(kup10c6'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pele.work',
-                 'www.pele.work', '54.91.26.135', 'ec2-54-91-26-135.compute-1.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,8 +47,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-CSRF_TRUSTED_ORIGINS = ["https://pele.work", "https://www.pele.work"]
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://0.0.0.0']
 
 ROOT_URLCONF = 'pele.urls'
 
@@ -200,11 +201,11 @@ EMAIL_HOST_USER = 'frizerskiSalonPele@outlook.com'
 EMAIL_HOST_PASSWORD = 'qwe123!@#P{}'
 EMAIL_PORT = '587'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_DIRS = [
-    BASE_DIR / "staticfiles",
+    BASE_DIR / "static",
 
 ]
 
@@ -214,15 +215,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
+
 # CELERY
 
-CELERY_BROKER_URL = 'redis://0.0.0.0:16379/0'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'django-db'
 
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://0.0.0.0:16379/1',
+        'LOCATION': 'redis://redis:6379/1',
     }
 }
 

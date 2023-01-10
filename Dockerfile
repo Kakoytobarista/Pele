@@ -19,5 +19,5 @@ CMD [ "sh", "-c", \
 && \
 python3 manage.py collectstatic --noinput \
 && \
-gunicorn pele.wsgi:application --bind 0:8000 && celery -A pele worker --beat -l INFO" \
+gunicorn pele.wsgi:application --bind 0.0.0.0:8000" \
 ]
