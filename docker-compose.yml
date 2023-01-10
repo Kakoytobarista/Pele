@@ -35,6 +35,15 @@ services:
     depends_on:
       - redis
 
+  flower:
+    build: ./
+    mem_reservation: 2GB
+    command: celery -A pele flower
+    ports:
+      - "5555:5555"
+    depends_on:
+      - celery-worker
+
 volumes:
   postgres_data:
   static_value:
