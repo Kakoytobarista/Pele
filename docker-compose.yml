@@ -41,6 +41,8 @@ services:
   redis:
     image: redis:alpine
     command: redis-server
+    ports:
+      - "6379:6379"
     expose:
       - 6379
 
@@ -48,12 +50,22 @@ services:
     build: ./
     mem_reservation: 2GB
     environment:
-      - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://0.0.0.0:6379/0
+      - CELERY_RESULT_BACKEND=redis://0.0.0.0:6379/0
       - CELERY_BEAT_SCHEDULER=django_celery_beat.schedulers:DatabaseScheduler
     command: celery -A pele worker --beat -l INFO
     depends_on:
       - redis
+
+  flower:
+    image: flower
+    command: flower --port=5555 --broker=redis://0.0.0.0:6379/0
+    ports:
+      - "5555:5555"
+    depends_on:
+      - celery-worker
+      - redis
+
 
 volumes:
   postgres_data:
