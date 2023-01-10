@@ -64,8 +64,10 @@ def clean_log_file_job():
 
 @shared_task
 def test_task():
-    send_mail_custom(name="hey",
-                     date=datetime.now(),
-                     time=datetime.now(),
-                     email="HeyDevAslan@gmail.com",
-                     mail_subject='Notification about today visit')
+    appointments = Appointment.objects.all()
+    for appointment in appointments:
+        send_mail_custom(name=appointment.name,
+                         date=appointment.date,
+                         time=appointment.time_begin,
+                         email="HeyDevAslan@gmail.com",
+                         mail_subject='Notification about today visit')
