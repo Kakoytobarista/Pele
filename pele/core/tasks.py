@@ -74,4 +74,5 @@ def test_task():
                          time=appointment.time_begin,
                          email="HeyAslan@yandex.ru",
                          mail_subject='Notification about today visit')
-    return ["hello, Aslan"]
+    result = ["HELLO"]
+    return result
