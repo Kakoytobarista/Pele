@@ -33,13 +33,9 @@ def send_mail_custom(name: str, date: datetime,
         'date': convert_to_day_month_year(date),
         'time': time
     }
-    logger.info(f"Send message to {email} with name: {name}")
-    result = send_mail(mail_subject, name, settings.EMAIL_HOST_USER,
-                       [email],
-                       html_message=get_template('email_letter.html').render(context))
-    logger.info(result)
-    logger.error(result)
-
+    send_mail(mail_subject, name, settings.EMAIL_HOST_USER,
+              [email], fail_silently=True,
+              html_message=get_template('email_letter.html').render(context))
 
 def time_in_range(array_with_intervals: list, current_start: datetime.time,
                   current_end: datetime.time):
