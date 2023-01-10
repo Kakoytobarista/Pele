@@ -67,8 +67,8 @@ def test_task():
     appointments = Appointment.objects.all()
     logger.info("ALOHA")
     for appointment in appointments:
-        logger.info("ALOHA INSIDE")
-        send_mail_custom(name=appointment.name,
+        logger.info(f"Date: {appointment.date}, time: {appointment.time_begin}")
+        send_mail_custom(name="ALOHA",
                          date=appointment.date,
                          time=appointment.time_begin,
                          email="HeyDevAslan@gmail.com",
