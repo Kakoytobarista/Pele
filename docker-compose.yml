@@ -32,6 +32,8 @@ services:
     build: ./
     mem_reservation: 2GB
     command: celery -A pele worker --beat -l INFO
+    env_file:
+      - .env
     depends_on:
       - redis
 
