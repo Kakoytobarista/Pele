@@ -60,19 +60,3 @@ def clean_log_file_job():
     path_to_logs = str(BASE_DIR) + '/logs/django.log'
     logger.debug('Delete log file')
     os.remove(path_to_logs)
-
-
-@shared_task
-def test_task():
-    appointments = Appointment.objects.all()
-    logger.info("ALOHA")
-    logger.error("ALOHHA ERROR")
-    for appointment in appointments:
-        logger.info(f"Date: {appointment.date}, time: {appointment.time_begin}")
-        send_mail_custom(name="ALOHA",
-                         date=appointment.date,
-                         time=appointment.time_begin,
-                         email="HeyDevAslan@gmail.com",
-                         mail_subject='Notification about today visit')
-    result = ["HELLO"]
-    return result

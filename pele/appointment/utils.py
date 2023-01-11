@@ -37,6 +37,7 @@ def send_mail_custom(name: str, date: datetime,
               [email], fail_silently=True,
               html_message=get_template('email_letter.html').render(context))
 
+
 def time_in_range(array_with_intervals: list, current_start: datetime.time,
                   current_end: datetime.time):
     """
