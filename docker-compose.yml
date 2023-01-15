@@ -25,8 +25,6 @@ services:
     command: redis-server
     ports:
       - "6379:6379"
-    expose:
-      - 6379
 
   celery-worker:
     build: ./

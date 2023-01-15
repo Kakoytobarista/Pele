@@ -4,6 +4,9 @@ from users.models import User
 
 
 class ReadOnlyModelSerializer(serializers.ModelSerializer):
+    """
+    Read only serializer.
+    """
     def get_fields(self, *args, **kwargs):
         fields = super().get_fields(*args, **kwargs)
         for field in fields:
